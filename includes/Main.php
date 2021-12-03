@@ -30,6 +30,8 @@ class Main {
      * Es wird ausgeführt, sobald die Klasse instanziiert wird.
      */
     public function onLoaded() {
-        
+        //Shortcode-Klasse wird instanziiert.
+        $shortcode = new Shortcode($this->pluginFile);
+        $shortcode->onLoaded();
     }
     }
