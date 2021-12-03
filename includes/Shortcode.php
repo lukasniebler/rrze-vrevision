@@ -16,7 +16,7 @@ class Shortcode {
     }
 
     public function onLoaded() {
-        add_shortcode('rrze_mustercontent', [$this, 'shortcodeOutput']);
+        add_shortcode('rrze_mustercontent', [$this, 'shortcodeOutput'], 10, 2);
     }
 
     /**
@@ -27,13 +27,13 @@ class Shortcode {
      */
     public function shortcodeOutput( $atts ){
         //merge given attributes with default ones
-        $shortcode_attr = shortcode_atts( array(
+        /*$shortcode_attr = shortcode_atts( array(
             'type'                  => 'text',
         ), $atts );
 
         $contenttype = $shortcode_attr['type'];
-
-        $html = '<h2>Hello World!</h2>';
+        */
+        $html = "<h2>Hello World!</h2>";
         /*if (!empty($html)) {
             Main::fau_fehlermeldungen_enqueue_style('fau-fehlermeldungen');
         }*/

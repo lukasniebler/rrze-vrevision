@@ -42,6 +42,8 @@ spl_autoload_register(function ($class) {
 register_activation_hook(__FILE__, __NAMESPACE__ . '\activation');
 register_deactivation_hook(__FILE__, __NAMESPACE__ . '\deactivation');
 
+add_action('plugins_loaded', __NAMESPACE__ . '\loaded');
+
 /**
  * Load Text Domain for Translations
  * @return void
