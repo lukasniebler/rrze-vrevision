@@ -34,4 +34,4 @@ class Main {
         $shortcode = new Shortcode($this->pluginFile);
         $shortcode->onLoaded();
     }
-    }
+}

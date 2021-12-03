@@ -40,7 +40,7 @@ class Shortcode {
     public function get_testcontent($type = 'other', $style = '') {
         $testcontent_templates = Options::getTemplates();
 
-        $contentnum = intval($type);
+        $contentnum = $type;
         if (!isset($testcontent_templates[$type])) {
             $type = 'other';
         }

@@ -24,7 +24,7 @@ class Options {
         );
     
     
-            return $known_themes;
+        return $known_themes;
     
     }
 
@@ -36,8 +36,8 @@ class Options {
     protected static function templates() {
         
         $testcontent_templates = array(
-            "default" => array(
-                "default"
+            "text" => array(
+                "pure-text"
             ),
         );
         return $testcontent_templates;
