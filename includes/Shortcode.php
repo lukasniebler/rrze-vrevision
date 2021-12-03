@@ -27,16 +27,42 @@ class Shortcode {
      */
     public function shortcodeOutput( $atts ){
         //merge given attributes with default ones
-        /*$shortcode_attr = shortcode_atts( array(
+        $shortcode_attr = shortcode_atts( array(
             'type'                  => 'text',
         ), $atts );
 
         $contenttype = $shortcode_attr['type'];
-        */
-        $html = "<h2>Hello World!</h2>";
-        /*if (!empty($html)) {
-            Main::fau_fehlermeldungen_enqueue_style('fau-fehlermeldungen');
-        }*/
+        
+        $html = $this->get_testcontent($contenttype);
         return $html;
+    }
+
+    public function get_testcontent($type = 'other', $style = '') {
+        $testcontent_templates = Options::getTemplates();
+
+        $contentnum = intval($type);
+        if (!isset($testcontent_templates[$type])) {
+            $type = 'other';
+        }
+        if (!isset($this->data))
+            $this->data = new \stdClass();
+        
+        $this->data->contenttype = $type;
+        $this->data->contentnum = $contentnum;
+        $this->data->imgpath = trailingslashit( plugins_url('', $this->pluginFile ) );
+
+        if (!empty($name)) {
+            $template = $type.'/'.$name;
+        } else {
+            $rand_key = array_rand($testcontent_templates[$type], 1);
+            $template = $type.'/'.$testcontent_templates[$type][$rand_key];
+        }
+        $content = Template::getContent($template, $this->data);
+        if (!empty($content)){
+            return $content;
+        } else {
+            $msg = "<!-- No Entry found for Error ".$type."-->";
+            return $msg;
+        }
     }
 }
