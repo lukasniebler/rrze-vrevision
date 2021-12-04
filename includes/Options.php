@@ -37,7 +37,8 @@ class Options {
         
         $testcontent_templates = array(
             "text" => array(
-                "pure-text"
+                "pure-text",
+                "text-bq",
             ),
         );
         return $testcontent_templates;
