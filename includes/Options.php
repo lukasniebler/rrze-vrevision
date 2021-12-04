@@ -46,6 +46,9 @@ class Options {
             ),
             "unicode" => array(
                 "all-unicode",
+            ),
+            "test" => array(
+                "standard",
             )
         );
         return $testcontent_templates;

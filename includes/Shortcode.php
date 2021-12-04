@@ -51,6 +51,7 @@ class Shortcode {
         $this->data->contentnum = $contentnum;
         $this->data->imgpath = trailingslashit( plugins_url('', $this->pluginFile ) );
         $this->data->unicode = Rabbithole::getSpecialCharset('debug','2');
+        $this->data->shortcode = SupportedShortcodes::accordeon(5, 'phil');
        
         /**
          * Creates Variables for Parser on Template-Sites
