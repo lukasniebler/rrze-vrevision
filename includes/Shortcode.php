@@ -45,13 +45,14 @@ class Shortcode {
             $type = 'other';
         }
         if (!isset($this->data))
-            $this->data = new \stdClass();
+        $this->data = new \stdClass();
         
         $this->data->contenttype = $type;
         $this->data->contentnum = $contentnum;
         $this->data->imgpath = trailingslashit( plugins_url('', $this->pluginFile ) );
         $this->data->unicode = Rabbithole::getSpecialCharset('debug','2');
         $this->data->shortcode = SupportedShortcodes::accordeon(5, 'phil');
+        $this->data->testoutput = Rabbithole::getRandomImage();
        
         /**
          * Creates Variables for Parser on Template-Sites
@@ -64,11 +65,7 @@ class Shortcode {
         $contentTypeSentence = array(
             'h',
             'citate',
-        );
-
-        $contentTypeWord = array(
-            'word',
-            'author',
+            'caption'
         );
         
         for ($i = 1; $i <= 10; $i++) {
@@ -77,9 +74,6 @@ class Shortcode {
             } 
             foreach ($contentTypeSentence as $value) {
                 $this->data->{$value . $i} = Rabbithole::getSentence(Rabbithole::getWords());
-            }
-            foreach ($contentTypeWord as $value) {
-                $this->data->{$value . $i} = Rabbithole::getWords();
             }
             $this->data->{'htmlparagraph' . $i} = Rabbithole::getParagraphWithFormatting();
         }
