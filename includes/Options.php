@@ -40,6 +40,10 @@ class Options {
                 "pure-text",
                 "text-bq",
             ),
+            "html-formatted" => array(
+                "formatted-bq",
+                "pure-formatted",
+            ),
         );
         return $testcontent_templates;
     }
