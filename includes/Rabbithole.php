@@ -4,6 +4,9 @@ namespace RRZE\vRevision;
 
 defined('ABSPATH') || exit;
 
+/**
+ * Rabbithole creates Word & Sentence-Structures while Alice.php provides the necessary words & terms.
+ */
 class Rabbithole {
     public static function getWords() {
         $main = Alice::getMainWords();
@@ -16,8 +19,17 @@ class Rabbithole {
         return $words;
     }
 
-    public static function getSentence() {
-        $words = Rabbithole::getWords();
+    /**
+     * Creates a new Sentence out of an array of words
+     *
+     * @param array of strings $input
+     * @return string
+     */
+
+    public static function getSentence($input) {
+    //    $words = Rabbithole::getWords();
+        shuffle($input);
+        $words = $input;
         $randomNumber = rand(6, 10);
         $sentence = '';
 
@@ -32,18 +44,31 @@ class Rabbithole {
         return $sentence;
     }
 
-    public static function getParagraph() {
+    /**
+     * Creates a Paragraph out of a array of words. Surrounds the result with html paragraph-Tag
+     *
+     * @param array of strings $input
+     * @return string
+     */
+    public static function getParagraph($input) {
         $randomNumber = rand(3, 5);
         $paragraph = '';
         $output = '';
             for ($j = 0; $j < $randomNumber; $j++) {
-                $paragraph .= Rabbithole::getSentence()." ";
+                $paragraph .= Rabbithole::getSentence($input)." ";
             }
             $output .= "<p>".$paragraph."</p>";
 
         return $output;
     }
 
+    /**
+     * Creates Unicode-Characters as String with html paragraph-tag
+     *
+     * @param string $type
+     * @param string $modus
+     * @return string
+     */
     public static function getSpecialCharset($type = 'default', $modus = '1') { //Debug
         if ($modus == 1){
             $standard = "— – ­ “ & ˆ ¡ ¦ ¨ ¯ ´ ¸ ¿ ˜ ‘ ’ ‚ “ ” „ ‹ › < > ± « » × ÷ ¢ £ ¤ ¥ § © ¬ ® ° µ ¶ · † ‡ ‰ € ¼ ½ ¾ ¹ ² ³ á Á â Â à À å Å ã Ã ä Ä ª æ Æ ç Ç ð Ð é É ê Ê è È ë Ë ƒ í Í î Î ì Ì ï Ï ñ Ñ ó Ó ô Ô ò Ò º ø Ø õ Õ ö Ö œ Œ š Š ß þ Þ ú Ú û Û ù Ù ü Ü ý Ý ÿ Ÿ";
@@ -64,32 +89,61 @@ class Rabbithole {
 
     }
 
-    public static function getHtmlFormatting() {
-        $sentence = Rabbithole::getSentence();
-        $formatting = array(
-            "<b>{$sentence}</b>",
-            "<strong>{$sentence}</strong>",
-            "<i>{$sentence}</i>",
-            "<em>{$sentence}</em>",
-            "<mark>{$sentence}</mark>",
-            "<small>{$sentence}</small>",
-            "<del>{$sentence}</del>",
-            "<ins>{$sentence}</ins>",
-            "<sub>{$sentence}</sub>",
+    /**
+     * Creates an array of words with all common html formatting options. Returns array of words with html-tags.
+     *
+     * @param array of strings $input
+     * @return array of strings
+     */
+    public static function getHtmlFormatting($input) {
+        $elements = array(
+            'b',
+            'strong',
+            'i',
+            'em',
+            'mark',
+            'small',
+            'del',
+            'ins',
+            'sub',
+            'sup',
+            'big',
+            'u',
         );
-        $randomNumber = rand(0, count($formatting));
-        return $formatting[$randomNumber];
+
+        $convert = array();
+
+        foreach ($elements as $value){
+            foreach ($input as $value2){
+            $convert[] = "<".$value.">".$value2."</".$value.">";
+            }
+        }
+
+        $words = Rabbithole::getWords();
+        $mix = array_merge($convert, $words);
+        shuffle($mix);
+        //$output = implode(' ', $mix);
+
+        return $mix;
     }
 
-    public static function getParagraphWithFormatting() {
-        $randomNumber = rand(5, 15);
-        $paragraph = '';
-        $output = '';
-            for ($j = 0; $j < $randomNumber; $j++) {
-                $paragraph .= Rabbithole::getSentence()." ".Rabbithole::getHtmlFormatting()." ";
-            }
-            $output .= "<p>".$paragraph."</p>";
+    /**
+     * Creates a Sentence with words containing html-Formatting.
+     *
+     * @return string
+     */
+    public static function getHtmlSentence() {
+        $output = Rabbithole::getSentence(Rabbithole::getHtmlFormatting(Rabbithole::getWords()));
+        return $output;
+    }
 
+    /**
+     * Creates a Paragraph with words which contain common html-Formatting
+     *
+     * @return string;
+     */
+    public static function getParagraphWithFormatting() {
+        $output = Rabbithole::getParagraph(Rabbithole::getHtmlFormatting(Rabbithole::getWords()));
         return $output;
     }
 }

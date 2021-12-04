@@ -23,7 +23,6 @@ class Options {
             ],
         );
     
-    
         return $known_themes;
     
     }
