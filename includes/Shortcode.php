@@ -51,6 +51,36 @@ class Shortcode {
         $this->data->contentnum = $contentnum;
         $this->data->imgpath = trailingslashit( plugins_url('', $this->pluginFile ) );
 
+        /**
+         * Creates Variables for Parser on Template-Sites
+         */
+        $contentTypeParagraph = array(
+            'paragraph',
+            'citate',
+        );
+
+        $contentTypeSentence = array(
+            'h',
+            'citate',
+        );
+
+        $contentTypeWord = array(
+            'word',
+            'author',
+        );
+        
+        for ($i = 1; $i <= 10; $i++) {
+            foreach ($contentTypeParagraph as $value) {
+                $this->data->{$value . $i} = Rabbithole::getParagraph();
+            } 
+            foreach ($contentTypeSentence as $value) {
+                $this->data->{$value . $i} = Rabbithole::getSentence();
+            }
+            foreach ($contentTypeWord as $value) {
+                $this->data->{$value . $i} = Rabbithole::getWords();
+            } 
+        }
+
         if (!empty($name)) {
             $template = $type.'/'.$name;
         } else {
