@@ -65,8 +65,8 @@ class Rabbithole {
     /**
      * Creates Unicode-Characters as String with html paragraph-tag
      *
-     * @param string $type
-     * @param string $modus
+     * @param string $type debug shows the number of each unicode symbole in square brackets. type default shows no numbers.
+     * @param string $modus 1 creates a list of common symbols - 2 generates all unicode-Symbols
      * @return string
      */
     public static function getSpecialCharset($type = 'default', $modus = '1') { //Debug

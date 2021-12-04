@@ -22,6 +22,7 @@ class Options {
                 'RRZE 2019',
             ],
         );
+
     
         return $known_themes;
     
@@ -43,6 +44,9 @@ class Options {
                 "formatted-bq",
                 "pure-formatted",
             ),
+            "unicode" => array(
+                "all-unicode",
+            )
         );
         return $testcontent_templates;
     }

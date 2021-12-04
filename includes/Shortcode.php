@@ -50,7 +50,7 @@ class Shortcode {
         $this->data->contenttype = $type;
         $this->data->contentnum = $contentnum;
         $this->data->imgpath = trailingslashit( plugins_url('', $this->pluginFile ) );
-        $this->data->test = Rabbithole::getParagraphWithFormatting();
+        $this->data->unicode = Rabbithole::getSpecialCharset('debug','2');
        
         /**
          * Creates Variables for Parser on Template-Sites
