@@ -63,4 +63,33 @@ class Rabbithole {
         return $paragraph;
 
     }
+
+    public static function getHtmlFormatting() {
+        $sentence = Rabbithole::getSentence();
+        $formatting = array(
+            "<b>{$sentence}</b>",
+            "<strong>{$sentence}</strong>",
+            "<i>{$sentence}</i>",
+            "<em>{$sentence}</em>",
+            "<mark>{$sentence}</mark>",
+            "<small>{$sentence}</small>",
+            "<del>{$sentence}</del>",
+            "<ins>{$sentence}</ins>",
+            "<sub>{$sentence}</sub>",
+        );
+        $randomNumber = rand(0, count($formatting));
+        return $formatting[$randomNumber];
+    }
+
+    public static function getParagraphWithFormatting() {
+        $randomNumber = rand(5, 15);
+        $paragraph = '';
+        $output = '';
+            for ($j = 0; $j < $randomNumber; $j++) {
+                $paragraph .= Rabbithole::getSentence()." ".Rabbithole::getHtmlFormatting()." ";
+            }
+            $output .= "<p>".$paragraph."</p>";
+
+        return $output;
+    }
 }

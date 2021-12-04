@@ -50,7 +50,7 @@ class Shortcode {
         $this->data->contenttype = $type;
         $this->data->contentnum = $contentnum;
         $this->data->imgpath = trailingslashit( plugins_url('', $this->pluginFile ) );
-
+       
         /**
          * Creates Variables for Parser on Template-Sites
          */
@@ -78,7 +78,8 @@ class Shortcode {
             }
             foreach ($contentTypeWord as $value) {
                 $this->data->{$value . $i} = Rabbithole::getWords();
-            } 
+            }
+            $this->data->{'htmlparagraph' . $i} = Rabbithole::getParagraphWithFormatting();
         }
 
         if (!empty($name)) {
