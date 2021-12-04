@@ -27,7 +27,6 @@ class Rabbithole {
      */
 
     public static function getSentence($input) {
-    //    $words = Rabbithole::getWords();
         shuffle($input);
         $words = $input;
         $randomNumber = rand(6, 10);

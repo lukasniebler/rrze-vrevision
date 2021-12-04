@@ -6,10 +6,6 @@ RRZE vRevision is a WordPress-Plugin for creating Test-content. The Shortcode is
 
 Download the Plugin-Folder and install it within your WordPress Test environment.
 
-```bash
-pip install foobar
-```
-
 ## Usage
 
 ```bash
