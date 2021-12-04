@@ -4,7 +4,13 @@ Das WordPress Plugin ermöglicht schnelles generieren von Testcontent. Hierfür 
 
 Als Attribut wird type="" gesetzt.
 
-Aktuell gibt es nur type="text".
+Aktuell gibt es:
+
+* type=""
+** text (generiert puren Text)
+** html-text (generiert Text mit HTML-Formatierung)
+
+
 Hierbei wird zwischen verschiedenen Text-Templates gemischt.
 
 Aktuell gibt es plain-text und text mit blockquotes.

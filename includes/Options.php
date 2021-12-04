@@ -40,7 +40,7 @@ class Options {
                 "pure-text",
                 "text-bq",
             ),
-            "html-formatted" => array(
+            "html-text" => array(
                 "formatted-bq",
                 "pure-formatted",
             ),
