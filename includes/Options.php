@@ -39,6 +39,7 @@ class Options {
             "text" => array(
                 "pure-text",
                 "text-bq",
+                "standard",
             ),
             "html-text" => array(
                 "formatted-bq",
@@ -46,6 +47,9 @@ class Options {
             ),
             "unicode" => array(
                 "all-unicode",
+            ),
+            "test" => array(
+                "musterinhalt",
             )
         );
         return $testcontent_templates;

@@ -4,7 +4,7 @@
 Plugin Name:     RRZE vRevision
 Plugin URI:      https://github.com/lukasniebler/rrze-vrevision
 Description:     Shortcode that displays dummy content to check fontspacing and Theme functionality.
-Version:         1.0.2
+Version:         1.0.4
 Author:          RRZE Webteam
 Author URI:      https://blogs.fau.de/webworking/
 License:         GNU General Public License v2
