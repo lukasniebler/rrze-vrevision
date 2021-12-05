@@ -50,12 +50,16 @@ class Shortcode {
         $this->data->contenttype = $type;
         $this->data->contentnum = $contentnum;
         $this->data->imgpath = trailingslashit( plugins_url('', $this->pluginFile ) );
+        
         $this->data->unicode = Rabbithole::getSpecialCharset('debug','2');
-        $this->data->shortcode = SupportedShortcodes::accordeon(5, 'phil');
-        $this->data->testoutput = Rabbithole::getRandomImage();
-       
+        $this->data->unicodeStandard =Rabbithole::getSpecialCharset('default', "1");
+        
+        $this->data->elementaccordion = SupportedShortcodes::accordeon(10, '');
+        $this->data->elementalert = SupportedShortcodes::alert(Rabbithole::getSentence(Rabbithole::getWords()));
+        $this->data->elementlatex = SupportedShortcodes::latex();
+        
         /**
-         * Creates Variables for Parser on Template-Sites
+         * Following Arrays are getting 10 stacks of their elements to create individual content-placeholders.
          */
         $contentTypeParagraph = array(
             'paragraph',
@@ -65,7 +69,8 @@ class Shortcode {
         $contentTypeSentence = array(
             'h',
             'citate',
-            'caption'
+            'caption',
+            'list',
         );
         
         for ($i = 1; $i <= 10; $i++) {
@@ -76,6 +81,7 @@ class Shortcode {
                 $this->data->{$value . $i} = Rabbithole::getSentence(Rabbithole::getWords());
             }
             $this->data->{'htmlparagraph' . $i} = Rabbithole::getParagraphWithFormatting();
+            $this->data->{'imgname' . $i} = Rabbithole::getRandomImage();
         }
 
         if (!empty($name)) {

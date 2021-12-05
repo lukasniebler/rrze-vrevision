@@ -21,4 +21,24 @@ class SupportedShortcodes{
         $output = do_shortcode('[collapsibles]'.$extend.'[/collapsibles]');
         return $output;
     }
+
+    /**
+     * Creates a RRZE Elements Alert with a String-Content passed into the function.
+     *
+     * @param string $content
+     * @return string
+     */
+    public static function alert($content){
+        $output= do_shortcode('[alert]'.$content.'[/alert]');
+        return $output;
+    }
+
+    public static function latex(){
+        $output = do_shortcode('[latex]
+        f(x) = \int_{-\infty}^\infty
+        \hat f(\xi)\,e^{2 \pi i \xi x}
+        \,d\xi
+        [/latex]');
+        return $output;
+    }
 }
