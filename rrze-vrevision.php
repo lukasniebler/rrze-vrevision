@@ -48,7 +48,8 @@ add_action('plugins_loaded', __NAMESPACE__ . '\loaded');
  * Load Text Domain for Translations
  * @return void
  */
-function loadTextdomain() {
+function loadTextdomain()
+{
     load_plugin_textdomain('fau-fehlermeldungen', false, sprintf('%s/languages/', dirname(plugin_basename(__FILE__))));
 }
 
@@ -56,38 +57,41 @@ function loadTextdomain() {
  * Check for System requirements
  * @return string error message
  */
-function systemRequirements() {
+function systemRequirements()
+{
     $error = '';
     if (version_compare(PHP_VERSION, RRZE_PHP_VERSION, '<')) {
-            $error = sprintf(__('The server is running PHP version %1$s. The Plugin requires at least PHP version %2$s.', 'fau-fehlermeldungen'), PHP_VERSION, RRZE_PHP_VERSION);
+        $error = sprintf(__('The server is running PHP version %1$s. The Plugin requires at least PHP version %2$s.', 'fau-fehlermeldungen'), PHP_VERSION, RRZE_PHP_VERSION);
     } elseif (version_compare($GLOBALS['wp_version'], RRZE_WP_VERSION, '<')) {
         $error = sprintf(__('The server is running WordPress version %1$s. The Plugin requires at least WordPress version %2$s.', 'fau-fehlermeldungen'), $GLOBALS['wp_version'], RRZE_WP_VERSION);
     }
     return $error;
 }
 
-function activation() {
+function activation()
+{
     loadTextdomain();
 
     if ($error = systemRequirements()) {
         deactivate_plugins(plugin_basename(__FILE__), false, true);
         wp_die($error);
     }
-
 }
 
 /**
  * Handler for Deactivation
  * @return void
  */
-function deactivation() {
+function deactivation()
+{
     flush_rewrite_rules();
 }
 
 /**
  * Once loaded, run
  */
-function loaded() {
+function loaded()
+{
     loadTextdomain();
 
     if ($error = systemRequirements()) {
@@ -99,8 +103,8 @@ function loaded() {
             printf('<div class="notice notice-error"><p>%1$s: %2$s</p></div>', esc_html($plugin_name), esc_html($error));
         });
     } else {
-	// Hauptklasse (Main) wird instanziiert.
-	$main = new Main(__FILE__);
-	$main->onLoaded();
+        // Hauptklasse (Main) wird instanziiert.
+        $main = new Main(__FILE__);
+        $main->onLoaded();
     }
 }

@@ -74,15 +74,19 @@ class Parser
      */
     protected function searchValue($index, $value)
     {
-        if (is_array($index) &&
-           ! empty($index)) {
+        if (
+            is_array($index) &&
+            !empty($index)
+        ) {
             $current_index = array_shift($index);
         }
-        if (is_array($index) &&
-           ! empty($index) &&
-           isset($value[$current_index]) &&
-           is_array($value[$current_index]) &&
-           ! empty($value[$current_index])) {
+        if (
+            is_array($index) &&
+            !empty($index) &&
+            isset($value[$current_index]) &&
+            is_array($value[$current_index]) &&
+            !empty($value[$current_index])
+        ) {
             return $this->searchValue($index, $value[$current_index]);
         } else {
             $val = isset($value[$current_index]) ? $value[$current_index] : '';
@@ -97,7 +101,7 @@ class Parser
      */
     public function matchTags($matches)
     {
-        if (! is_array($matches)) {
+        if (!is_array($matches)) {
             return '';
         }
 
@@ -115,7 +119,7 @@ class Parser
         $temp = '';
         $i;
 
-        if (! $val) {
+        if (!$val) {
             // Check for if negation
             if ($meta == '!') {
                 return $this->render($expr);
@@ -128,7 +132,7 @@ class Parser
         }
 
         // Check for regular if expr
-        if (! $meta) {
+        if (!$meta) {
             return $this->render($ifTrue);
         }
 
@@ -159,7 +163,7 @@ class Parser
      */
     public function replaceTags($matches)
     {
-        if (! is_array($matches)) {
+        if (!is_array($matches)) {
             return '';
         }
 
@@ -193,8 +197,9 @@ class Parser
      * @param  array $data      [description]
      * @return string           [description]
      */
-    public function parse($templateFile, $data)  {
-        if (! is_readable($templateFile)) {
+    public function parse($templateFile, $data)
+    {
+        if (!is_readable($templateFile)) {
             return '';
         }
         ob_start();

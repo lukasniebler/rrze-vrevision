@@ -8,8 +8,10 @@ defined('ABSPATH') || exit;
  * Word-Collection for Rabbithole.php
  * Words are used to generate Text-Content
  */
-class Alice{
-    public static function getMainWords() {
+class Alice
+{
+    public static function getMainWords()
+    {
         $main = array(
             'Alice',
             'Schwester',
@@ -379,12 +381,13 @@ class Alice{
             'zustande kommen',
             'zuwider',
         );
-    
+
         return $main;
     }
 
-    public static function getDifficultWords() {
-               
+    public static function getDifficultWords()
+    {
+
         $keywords = array(
             'Polymer',
             'Polysaccharid',
@@ -396,11 +399,12 @@ class Alice{
             'Sakroplasmatisches',
             'Retikulum',
         );
-        
+
         return $keywords;
     }
 
-    public static function getFillerWords() {
+    public static function getFillerWords()
+    {
 
         $polyfill = array(
             'an',
@@ -419,5 +423,4 @@ class Alice{
 
         return $polyfill;
     }
-
 }

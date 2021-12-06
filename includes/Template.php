@@ -4,14 +4,16 @@ namespace RRZE\vRevision;
 
 defined('ABSPATH') || exit;
 
-class Template {
+class Template
+{
     /**
      * [getContent description]
      * @param  string $template [description]
      * @param  array  $data     [description]
      * @return string           [description]
      */
-    public static function getContent($template = '', $data = []) {
+    public static function getContent($template = '', $data = [])
+    {
         return self::parseContent($template, $data);
     }
 
@@ -21,9 +23,10 @@ class Template {
      * @param  array  $data     [description]
      * @return string           [description]
      */
-    protected static function parseContent($template, $data) {
+    protected static function parseContent($template, $data)
+    {
         $templateFile = self::getTemplateLocale($template);
-        if (! $templateFile ) {
+        if (!$templateFile) {
             return '';
         }
         $parser = new Parser();
@@ -35,7 +38,8 @@ class Template {
      * @param  string $template [description]
      * @return string           [description]
      */
-    protected static function getTemplateLocale($template) {
+    protected static function getTemplateLocale($template)
+    {
         $pluginDirPath = plugin_dir_path(RRZE_PLUGIN_FILE);
         $locale = Locale::getLocale();
         $format = '%1$stemplates/%2$s-%3$s.html';
@@ -51,8 +55,8 @@ class Template {
         if (isset($localeFallback[$langCode])) {
             $templateFile = sprintf($format, $pluginDirPath, $template, $localeFallback[$langCode]);
         } else {
-	    $templateFile = sprintf($format, $pluginDirPath, $template, 'de_DE');
-	}
+            $templateFile = sprintf($format, $pluginDirPath, $template, 'de_DE');
+        }
         return is_readable($templateFile) ? $templateFile : '';
     }
 }
