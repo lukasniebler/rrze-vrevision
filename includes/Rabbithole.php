@@ -7,8 +7,10 @@ defined('ABSPATH') || exit;
 /**
  * Rabbithole creates Word & Sentence-Structures while Alice.php provides the necessary words & terms.
  */
-class Rabbithole {
-    public static function getWords() {
+class Rabbithole
+{
+    public static function getWords()
+    {
         $main = Alice::getMainWords();
         $keywords = Alice::getDifficultWords();
         $polyfill = Alice::getFillerWords();
@@ -26,7 +28,8 @@ class Rabbithole {
      * @return string
      */
 
-    public static function getSentence($input) {
+    public static function getSentence($input)
+    {
         shuffle($input);
         $words = $input;
         $randomNumber = rand(6, 10);
@@ -36,9 +39,9 @@ class Rabbithole {
 
         if (count($words) > 0) {
             for ($i = 0; $i < $randomNumber; $i++) {
-                $sentence .= $words[$i]." ";
+                $sentence .= $words[$i] . " ";
             }
-            $sentence = rtrim($sentence).".";
+            $sentence = rtrim($sentence) . ".";
         }
         return $sentence;
     }
@@ -49,14 +52,15 @@ class Rabbithole {
      * @param array of strings $input
      * @return string
      */
-    public static function getParagraph($input) {
+    public static function getParagraph($input)
+    {
         $randomNumber = rand(3, 5);
         $paragraph = '';
         $output = '';
-            for ($j = 0; $j < $randomNumber; $j++) {
-                $paragraph .= Rabbithole::getSentence($input)." ";
-            }
-            $output .= "<p>".$paragraph."</p>";
+        for ($j = 0; $j < $randomNumber; $j++) {
+            $paragraph .= Rabbithole::getSentence($input) . " ";
+        }
+        $output .= "<p>" . $paragraph . "</p>";
 
         return $output;
     }
@@ -68,24 +72,24 @@ class Rabbithole {
      * @param string $modus 1 creates a list of common symbols - 2 generates all unicode-Symbols
      * @return string
      */
-    public static function getSpecialCharset($type = 'default', $modus = '1') { //Debug
-        if ($modus == 1){
+    public static function getSpecialCharset($type = 'default', $modus = '1')
+    { //Debug
+        if ($modus == 1) {
             $standard = "— – ­ “ & ˆ ¡ ¦ ¨ ¯ ´ ¸ ¿ ˜ ‘ ’ ‚ “ ” „ ‹ › < > ± « » × ÷ ¢ £ ¤ ¥ § © ¬ ® ° µ ¶ · † ‡ ‰ € ¼ ½ ¾ ¹ ² ³ á Á â Â à À å Å ã Ã ä Ä ª æ Æ ç Ç ð Ð é É ê Ê è È ë Ë ƒ í Í î Î ì Ì ï Ï ñ Ñ ó Ó ô Ô ò Ò º ø Ø õ Õ ö Ö œ Œ š Š ß þ Þ ú Ú û Û ù Ù ü Ü ý Ý ÿ Ÿ";
-            $paragraph = '<p>'.$standard.'</p>';
-        } else if ($modus == 2){
+            $paragraph = '<p>' . $standard . '</p>';
+        } else if ($modus == 2) {
             $unicode = "";
-                for ($i = 0; $i<10626; $i++){
-                    if($type == 'debug'){
-                    $unicode .= '&#'.$i.";"." [$i] |";
-                    } else if($type == 'default'){
-                    $unicode .= '&#'.$i.";"." ";
-                    };
-                }   
-            $paragraph = '<p>'.$unicode.'</p>';
+            for ($i = 0; $i < 10626; $i++) {
+                if ($type == 'debug') {
+                    $unicode .= '&#' . $i . ";" . " [$i] |";
+                } else if ($type == 'default') {
+                    $unicode .= '&#' . $i . ";" . " ";
+                };
             }
+            $paragraph = '<p>' . $unicode . '</p>';
+        }
 
         return $paragraph;
-
     }
 
     /**
@@ -94,7 +98,8 @@ class Rabbithole {
      * @param array of strings $input
      * @return array of strings
      */
-    public static function getHtmlFormatting($input) {
+    public static function getHtmlFormatting($input)
+    {
         $elements = array(
             'b',
             'strong',
@@ -112,9 +117,9 @@ class Rabbithole {
 
         $convert = array();
 
-        foreach ($elements as $value){
-            foreach ($input as $value2){
-            $convert[] = "<".$value.">".$value2."</".$value.">";
+        foreach ($elements as $value) {
+            foreach ($input as $value2) {
+                $convert[] = "<" . $value . ">" . $value2 . "</" . $value . ">";
             }
         }
 
@@ -131,7 +136,8 @@ class Rabbithole {
      *
      * @return string
      */
-    public static function getHtmlSentence() {
+    public static function getHtmlSentence()
+    {
         $output = Rabbithole::getSentence(Rabbithole::getHtmlFormatting(Rabbithole::getWords()));
         return $output;
     }
@@ -141,29 +147,32 @@ class Rabbithole {
      *
      * @return string;
      */
-    public static function getParagraphWithFormatting() {
+    public static function getParagraphWithFormatting()
+    {
         $output = Rabbithole::getParagraph(Rabbithole::getHtmlFormatting(Rabbithole::getWords()));
         return $output;
     }
 
-    public static function getImageNames() {
+    public static function getImageNames()
+    {
         $fileNames = [];
         $imgDir = dirname(__FILE__, 2) . "/assets/img";
-        
+
         $dir = new \DirectoryIterator($imgDir);
         foreach ($dir as $fileinfo) {
             if (!$fileinfo->isDot()) {
-                $fileNames [] = ($fileinfo->getFilename());
+                $fileNames[] = ($fileinfo->getFilename());
             }
         }
 
         return $fileNames;
     }
 
-    public static function getRandomImage() {
+    public static function getRandomImage()
+    {
         $imgArray = Rabbithole::getImageNames();
         $random = rand(1, count($imgArray));
-        
+
         return $imgArray[$random];
     }
 }

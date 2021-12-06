@@ -4,8 +4,10 @@ namespace RRZE\vRevision;
 
 defined('ABSPATH') || exit;
 
-class Options {
-    protected static function known_themes() {
+class Options
+{
+    protected static function known_themes()
+    {
         $known_themes = array(
             'fauthemes' => [
                 'FAU-Einrichtungen',
@@ -23,18 +25,18 @@ class Options {
             ],
         );
 
-    
+
         return $known_themes;
-    
     }
 
-    public static function getKnownThemes() {
+    public static function getKnownThemes()
+    {
         return self::known_themes();
-    
-        }
+    }
 
-    protected static function templates() {
-        
+    protected static function templates()
+    {
+
         $testcontent_templates = array(
             "text" => array(
                 "pure-text",
@@ -55,7 +57,8 @@ class Options {
         return $testcontent_templates;
     }
 
-    public static function getTemplates() {
+    public static function getTemplates()
+    {
         return self::templates();
     }
 }
