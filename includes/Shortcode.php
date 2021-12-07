@@ -20,7 +20,7 @@ class Shortcode
 
     public function onLoaded()
     {
-        add_shortcode('rrze_mustercontent', [$this, 'shortcodeOutput'], 10, 2);
+        add_shortcode('rrze_vrevision', [$this, 'shortcodeOutput'], 10, 2);
     }
 
     /**
