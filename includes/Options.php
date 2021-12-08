@@ -38,21 +38,30 @@ class Options
     {
 
         $testcontent_templates = array(
-            "text" => array(
+            "dynamic-text" => array(
                 "pure-text",
                 "text-bq",
                 "standard",
             ),
-            "html-text" => array(
+            "dynamic-html-text" => array(
                 "formatted-bq",
                 "pure-formatted",
+            ),
+            "dynamic-table" => array(
+                "dynamic-table-core",
             ),
             "unicode" => array(
                 "all-unicode",
             ),
             "test" => array(
                 "musterinhalt",
-            )
+            ),
+            "table" => array(
+                "table-core",
+            ),
+            "long-text-article" => array(
+                "long-text-article-core",
+            ),
         );
         return $testcontent_templates;
     }

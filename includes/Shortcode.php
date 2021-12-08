@@ -63,7 +63,8 @@ class Shortcode
         $this->data->elementaccordion = SupportedShortcodes::accordeon(10, '');
         $this->data->elementalert = SupportedShortcodes::alert(Rabbithole::getSentence(Rabbithole::getWords()));
         $this->data->elementlatex = SupportedShortcodes::latex();
-        $this->data->inputtest = Template::getContent('template-parts', $this->data);
+        $this->data->table = $this->getTemplateParts('table');
+        $this->data->longarticle = $this->getTemplateParts('long-text-article');
 
         /**
          * Following Arrays are getting 10 stacks of their elements to create individual content-placeholders.
@@ -90,6 +91,32 @@ class Shortcode
             $this->data->{'htmlparagraph' . $i} = Rabbithole::getParagraphWithFormatting();
             $this->data->{'imgname' . $i} = Rabbithole::getRandomImage();
         }
+
+        if (!empty($name)) {
+            $template = $type . '/' . $name;
+        } else {
+            $rand_key = array_rand($testcontent_templates[$type], 1);
+            $template = $type . '/' . $testcontent_templates[$type][$rand_key];
+        }
+        $content = Template::getContent($template, $this->data);
+        if (!empty($content)) {
+            return $content;
+        } else {
+            $msg = "<!-- No Entry found for Error " . $type . "-->";
+            return $msg;
+        }
+    }
+
+    public function getTemplateParts($type = '')
+    {
+        $testcontent_templates = Options::getTemplates();
+
+        $contentnum = $type;
+        if (!isset($testcontent_templates[$type])) {
+            $type = 'other';
+        }
+        if (!isset($this->data))
+            $this->data = new \stdClass();
 
         if (!empty($name)) {
             $template = $type . '/' . $name;
