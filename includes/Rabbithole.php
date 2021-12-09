@@ -152,27 +152,4 @@ class Rabbithole
         $output = Rabbithole::getParagraph(Rabbithole::getHtmlFormatting(Rabbithole::getWords()));
         return $output;
     }
-
-    public static function getImageNames()
-    {
-        $fileNames = [];
-        $imgDir = dirname(__FILE__, 2) . "/assets/img";
-
-        $dir = new \DirectoryIterator($imgDir);
-        foreach ($dir as $fileinfo) {
-            if (!$fileinfo->isDot()) {
-                $fileNames[] = ($fileinfo->getFilename());
-            }
-        }
-
-        return $fileNames;
-    }
-
-    public static function getRandomImage()
-    {
-        $imgArray = Rabbithole::getImageNames();
-        $random = rand(1, count($imgArray));
-
-        return $imgArray[$random];
-    }
 }

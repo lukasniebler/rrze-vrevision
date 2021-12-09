@@ -89,7 +89,6 @@ class Shortcode
                 $this->data->{$value . $i} = Rabbithole::getSentence(Rabbithole::getWords());
             }
             $this->data->{'htmlparagraph' . $i} = Rabbithole::getParagraphWithFormatting();
-            $this->data->{'imgname' . $i} = Rabbithole::getRandomImage();
         }
 
         if (!empty($name)) {
