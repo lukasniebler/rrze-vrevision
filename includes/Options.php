@@ -62,6 +62,9 @@ class Options
             "long-text-article" => array(
                 "long-text-article-core",
             ),
+            "image" => array(
+                "default-image",
+            ),
         );
         return $testcontent_templates;
     }

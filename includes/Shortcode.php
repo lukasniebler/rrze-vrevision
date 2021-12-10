@@ -65,6 +65,7 @@ class Shortcode
         $this->data->elementlatex = SupportedShortcodes::latex();
         $this->data->table = $this->getTemplateParts('table');
         $this->data->longarticle = $this->getTemplateParts('long-text-article');
+        $this->data->image = $this->getTemplateParts('image');
 
         /**
          * Following Arrays are getting 10 stacks of their elements to create individual content-placeholders.
