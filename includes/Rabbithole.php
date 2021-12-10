@@ -58,7 +58,7 @@ class Rabbithole
         $paragraph = '';
         $output = '';
         for ($j = 0; $j < $randomNumber; $j++) {
-            $paragraph .= Rabbithole::getSentence($input) . " ";
+            $paragraph .= self::getSentence($input) . " ";
         }
         $output .= "<p>" . $paragraph . "</p>";
 
@@ -123,7 +123,7 @@ class Rabbithole
             }
         }
 
-        $words = Rabbithole::getWords();
+        $words = self::getWords();
         $mix = array_merge($convert, $words);
         shuffle($mix);
         //$output = implode(' ', $mix);
@@ -138,7 +138,7 @@ class Rabbithole
      */
     public static function getHtmlSentence()
     {
-        $output = Rabbithole::getSentence(Rabbithole::getHtmlFormatting(Rabbithole::getWords()));
+        $output = self::getSentence(self::getHtmlFormatting(self::getWords()));
         return $output;
     }
 
@@ -149,7 +149,7 @@ class Rabbithole
      */
     public static function getParagraphWithFormatting()
     {
-        $output = Rabbithole::getParagraph(Rabbithole::getHtmlFormatting(Rabbithole::getWords()));
+        $output = self::getParagraph(self::getHtmlFormatting(self::getWords()));
         return $output;
     }
 }
