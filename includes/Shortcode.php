@@ -67,6 +67,7 @@ class Shortcode
         $this->data->longarticle = $this->getTemplateParts('long-text-article');
         $this->data->image = $this->getTemplateParts('image');
         $this->data->imglalign = $this->getTemplateParts('img-lalign');
+        $this->data->blockquote = $this->getTemplateParts('blockquote');
 
         /**
          * Following Arrays are getting 10 stacks of their elements to create individual content-placeholders.

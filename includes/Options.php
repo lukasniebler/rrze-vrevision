@@ -68,6 +68,9 @@ class Options
             "img-lalign" => array(
                 "leftalign-image",
             ),
+            "blockquote" => array(
+                "default-blockquote",
+            )
         );
         return $testcontent_templates;
     }
