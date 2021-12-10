@@ -65,6 +65,9 @@ class Options
             "image" => array(
                 "default-image",
             ),
+            "img-lalign" => array(
+                "leftalign-image",
+            ),
         );
         return $testcontent_templates;
     }

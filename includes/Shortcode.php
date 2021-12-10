@@ -66,6 +66,7 @@ class Shortcode
         $this->data->table = $this->getTemplateParts('table');
         $this->data->longarticle = $this->getTemplateParts('long-text-article');
         $this->data->image = $this->getTemplateParts('image');
+        $this->data->imglalign = $this->getTemplateParts('img-lalign');
 
         /**
          * Following Arrays are getting 10 stacks of their elements to create individual content-placeholders.
