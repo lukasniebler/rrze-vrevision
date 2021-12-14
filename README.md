@@ -33,15 +33,6 @@ Creates content with all existing unicode-Symbols (!10400+ Unicode Characters - 
 [rrze_vrevision type="unicode"]
 ```
 
-### type="text"
-
-Creates headlines and paragraphs without html-formatting. These Templates can include other Elements.
-
-```bash
-# type="text"
-[rrze_vrevision type="text"] | Creates headlines and paragraphs without html-formatting.
-```
-
 ### type="html-text"
 
 Creates content with all available html-Formatting-Options. Html-Tags can be extended in file Rabbithole.php on Line 97.
@@ -51,35 +42,13 @@ Creates content with all available html-Formatting-Options. Html-Tags can be ext
 [rrze_vrevision type="html-text"] | Creates headlines and paragraphs with common html-formatting. Including underlined text, bolt text, etc...
 ```
 
-## Include your own Templates
+## Determine Characters per line
 
--   Create a new Folder with a name for your templates
--   Create a new File inside your created Folder in the format identifier-de_DE.html
--   Register your Template inside Options.php
+You can target Span-Elements within their paragraphs.
+The following ID's are available:
+rrze-vrevision-45-characters | 50 | 60 | 72
 
-### The following Variables are currently available for use in Template-Files:
-
--   {{=paragraph1}} up to paragraph 10 | Creates paragraph
--   {{=h1}} up to h10 | Creates a sentence
--   {{=htmlparagraph1}} up to htmlparagraph10 | Creates a paragraph with html formatting
--   {{=author1}} up to author10 | Creates a random word
--   {{=word1}} up to word10 | Creates a random word
--   {{=citate1}} up to citate10 | Creates a sentence
--   {{=unicode}} | Creates all unicode-Characters
--   {{=unicodeStandard}} | Creates a brief list of common unicode-Symbols
--   {{=imgpath}}/assets/img/{{=imgname1}} up to imgname 10
--   {{=elementalert}}
--   {{=elementaccordion}}
--   {{=elementlatex}}
-
-This list will be enhanced within the next versions.
-
-## Include your own Image-Files
-
-Insert your own Image-Files inside the assets/img-Folder. All templates now load your images instead with the variable {{=imagname1}} (up to 10) inside the Template-Files.
-
-You can also delete certain images out of the Plugin-Directory.
-
+These numbers are within the recommended range for best readability.
 ## License
 
 This project is licensed under GNU general public license.
