@@ -70,6 +70,7 @@ class Shortcode
         $this->data->imglalign = $this->getTemplateParts('img-lalign');
         $this->data->imgralign = $this->getTemplateParts('img-ralign');
         $this->data->imgcenter = $this->getTemplateParts('img-center');
+        $this->data->list = $this->getTemplateParts('list');
 
         /**
          * Following Arrays are getting 10 stacks of their elements to create individual content-placeholders.

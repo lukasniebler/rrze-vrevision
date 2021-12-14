@@ -77,6 +77,9 @@ class Options
             "blockquote" => array(
                 "default-blockquote",
             ),
+            "list" => array(
+                "standardlists",
+            ),
         );
         return $testcontent_templates;
     }
