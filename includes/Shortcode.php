@@ -33,7 +33,7 @@ class Shortcode
     {
         //merge given attributes with default ones
         $shortcode_attr = shortcode_atts(array(
-            'type'                  => 'text',
+            'type'                  => 'test',
         ), $atts);
 
         $contenttype = $shortcode_attr['type'];
