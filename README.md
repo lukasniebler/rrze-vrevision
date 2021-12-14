@@ -45,7 +45,7 @@ Creates content with all available html-Formatting-Options. Html-Tags can be ext
 ## Determine Characters per line
 
 You can target Span-Elements within their paragraphs.
-The following ID's are available:
+The following Class-names are available:
 rrze-vrevision-45-characters | 50 | 60 | 72
 
 These numbers are within the recommended range for best readability.
