@@ -38,21 +38,48 @@ class Options
     {
 
         $testcontent_templates = array(
-            "text" => array(
+            "dynamic-text" => array(
                 "pure-text",
                 "text-bq",
                 "standard",
             ),
-            "html-text" => array(
+            "dynamic-html-text" => array(
                 "formatted-bq",
                 "pure-formatted",
+            ),
+            "dynamic-table" => array(
+                "dynamic-table-core",
             ),
             "unicode" => array(
                 "all-unicode",
             ),
             "test" => array(
                 "musterinhalt",
-            )
+            ),
+            "table" => array(
+                "table-core",
+            ),
+            "long-text-article" => array(
+                "long-text-article-core",
+            ),
+            "image" => array(
+                "default-image",
+            ),
+            "img-lalign" => array(
+                "leftalign-image",
+            ),
+            "img-ralign" => array(
+                "rightalign-image",
+            ),
+            "img-center" => array(
+                "imgcenter_image",
+            ),
+            "blockquote" => array(
+                "default-blockquote",
+            ),
+            "list" => array(
+                "standardlists",
+            ),
         );
         return $testcontent_templates;
     }
