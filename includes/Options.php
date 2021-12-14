@@ -68,9 +68,15 @@ class Options
             "img-lalign" => array(
                 "leftalign-image",
             ),
+            "img-ralign" => array(
+                "rightalign-image",
+            ),
+            "img-center" => array(
+                "imgcenter_image",
+            ),
             "blockquote" => array(
                 "default-blockquote",
-            )
+            ),
         );
         return $testcontent_templates;
     }
