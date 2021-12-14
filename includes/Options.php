@@ -80,6 +80,9 @@ class Options
             "list" => array(
                 "standardlists",
             ),
+            "code" => array(
+                "standardcode",
+            ),
         );
         return $testcontent_templates;
     }
