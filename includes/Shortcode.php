@@ -73,7 +73,12 @@ class Shortcode
         $this->data->list = $this->getTemplateParts('list');
         $this->data->code = $this->getTemplateParts('code');
         $this->data->test = $this->getImgNames("Workflow1024");
-        $this->data->imagun = $this->getImgpath('1024','Workflow','Original');
+        $this->data->imagunA = 'ok';
+        https://wp-plugin-lorem-ipsum:8890/wp-content/plugins/rrze-vrevision/assets/img/Original/P1040184.JPG
+        //$this->data->imagun1024 = $this->getImgpath('1024','Workflow','Original');
+        $this->data->imagunB = $this->getImgpath('300','Workflow','Original');
+        $this->data->imagunC = $this->getImgpath('150','Workflow','Original');
+        $this->data->imagunO = $this->getImgpath('original','Workflow','Original');
 
         //$this->data->img1024 = $this->
 
@@ -142,7 +147,7 @@ class Shortcode
             return $msg;
         }
     }
-
+    
     /**
      * Returns an image-Filename out of the Workflow1024 Folder for reference.
      *
@@ -184,8 +189,7 @@ class Shortcode
         }
         $output = $dir.'assets/img/'.$resolution.'/'.$this->getImgNames($resolution);
         $withoutExt = preg_replace('/\\.[^.\\s]{3,4}$/', '', $output);
-        
-        return $withoutExt;
+        return $output;
     }
     
 }
