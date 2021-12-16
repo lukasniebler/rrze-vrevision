@@ -72,6 +72,7 @@ class Shortcode
         $this->data->imgcenter = $this->getTemplateParts('img-center');
         $this->data->list = $this->getTemplateParts('list');
         $this->data->code = $this->getTemplateParts('code');
+       // $this->data->test = $this->getImgNames();
 
         /**
          * Following Arrays are getting 10 stacks of their elements to create individual content-placeholders.
@@ -138,4 +139,14 @@ class Shortcode
             return $msg;
         }
     }
+/*
+    public function getImgNames(){
+        //$array = scandir($this->pluginFile."/assets/img/Workflow1024", 1);
+        //$randomNumber = rand(0, count($array));
+        $ok = trailingslashit(plugins_url('', $this->pluginFile));
+        $path = $ok."assets/img/Workflow1024";
+        $files = array_diff(scandir(trailingslashit($path)), array('..', '.'));
+        return $path;
+    }
+    */
 }
