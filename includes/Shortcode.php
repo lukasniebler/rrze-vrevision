@@ -73,8 +73,8 @@ class Shortcode
         $this->data->list = $this->getTemplateParts('list');
         $this->data->code = $this->getTemplateParts('code');
         $this->data->test = $this->getImgNames("Workflow1024");
-        $this->data->imagunA = 'ok';
-        https://wp-plugin-lorem-ipsum:8890/wp-content/plugins/rrze-vrevision/assets/img/Original/P1040184.JPG
+        $this->data->imagunA = $this->getImgpath('1024','Workflow','Original');
+       
         //$this->data->imagun1024 = $this->getImgpath('1024','Workflow','Original');
         $this->data->imagunB = $this->getImgpath('300','Workflow','Original');
         $this->data->imagunC = $this->getImgpath('150','Workflow','Original');
@@ -141,13 +141,13 @@ class Shortcode
         }
         $content = Template::getContent($template, $this->data);
         if (!empty($content)) {
+            var_dump($content);
             return $content;
         } else {
             $msg = "<!-- No Entry found for Error " . $type . "-->";
             return $msg;
         }
     }
-    
     /**
      * Returns an image-Filename out of the Workflow1024 Folder for reference.
      *
@@ -171,7 +171,6 @@ class Shortcode
      * @return string returns a imagepath
      */
     public function getImgpath($res, $foldername, $ref){
-        $dir = trailingslashit(plugins_url('', $this->pluginFile));
         $resolution = '';
         switch($res) {
             case '1024':
@@ -187,9 +186,10 @@ class Shortcode
                 $resolution = $ref;
                 break;
         }
-        $output = $dir.'assets/img/'.$resolution.'/'.$this->getImgNames($resolution);
-        $withoutExt = preg_replace('/\\.[^.\\s]{3,4}$/', '', $output);
-        return $output;
+        $urlpartial = 'assets/img/'.$resolution.'/'.$this->getImgNames($resolution);
+        $dir = untrailingslashit(plugins_url($urlpartial, $this->pluginFile));
+        var_dump($dir);
+        return $dir;
     }
     
 }

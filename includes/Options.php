@@ -72,7 +72,7 @@ class Options
                 "rightalign-image",
             ),
             "img-center" => array(
-                "imgcenter_image",
+                "imgcenter-image",
             ),
             "blockquote" => array(
                 "default-blockquote",
