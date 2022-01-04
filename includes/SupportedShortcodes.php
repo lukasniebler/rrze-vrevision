@@ -17,7 +17,7 @@ class SupportedShortcodes
     {
         $extend = '';
         for ($i = 1; $i <= $count; $i++) {
-            $extend .= '[collapse color="' . $color . '" title="' . Rabbithole::getSentence(Rabbithole::getWords()) . '"]' . Rabbithole::getParagraphWithFormatting() . '[/collapse]';
+            $extend .= '[collapse color="' . $color . '" title="' . "Missing logic" . '"]' . "Missing logic" . '[/collapse]';
         };
 
         $output = do_shortcode('[collapsibles]' . $extend . '[/collapsibles]');
