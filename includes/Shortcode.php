@@ -142,7 +142,6 @@ class Shortcode
         }
         $content = Template::getContent($template, $this->data);
         if (!empty($content)) {
-            var_dump($content);
             return $content;
         } else {
             $msg = "<!-- No Entry found for Error " . $type . "-->";
@@ -189,7 +188,6 @@ class Shortcode
         }
         $urlpartial = 'assets/img/'.$resolution.'/'.$this->getImgNames($resolution);
         $dir = untrailingslashit(plugins_url($urlpartial, $this->pluginFile));
-        var_dump($dir);
         return $dir;
     }
     
