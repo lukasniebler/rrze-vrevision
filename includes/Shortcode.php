@@ -44,6 +44,9 @@ class Shortcode
     public function get_testcontent($type = 'other', $style = '')
     {
         $generator = new Generator($this->pluginFile);
+        $textgenerator = new Text();
+
+        $quotearray = $textgenerator->getQuote();
         $testcontent_templates = Options::getTemplates();
 
         $contentnum = $type;
@@ -62,12 +65,16 @@ class Shortcode
         
         $this->data->unicode = $generator->getSpecialCharset('debug', '2');
         $this->data->unicodeStandard = $generator->getSpecialCharset('default', "1");
+
+        $this->data->gettext = $textgenerator->getQuote();
         
-        $this->data->test = $generator->getImgNames("Workflow1024");
         $this->data->imagunA = $generator->getImgpath('1024','Workflow','Original');
         $this->data->imagunB = $generator->getImgpath('300','Workflow','Original');
         $this->data->imagunC = $generator->getImgpath('150','Workflow','Original');
         $this->data->imagunO = $generator->getImgpath('original','Workflow','Original');
+
+        $this->data->author = $quotearray[1];
+        $this->data->citate = $quotearray[0];
         
         $this->data->elementaccordion = SupportedShortcodes::accordeon(10, '');
         $this->data->elementalert = SupportedShortcodes::alert('Content missing');

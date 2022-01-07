@@ -80,4 +80,5 @@ class Generator
         $dir = untrailingslashit(plugins_url($urlpartial, $this->pluginFile));
         return $dir;
     }
+
 }
