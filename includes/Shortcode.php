@@ -68,24 +68,24 @@ class Shortcode
 
         $this->data->gettext = $textgenerator->getQuote();
         
-        $this->data->imagunA = $generator->getImgpath('1024','Workflow','Original');
-        $this->data->imagunB = $generator->getImgpath('300','Workflow','Original');
-        $this->data->imagunC = $generator->getImgpath('150','Workflow','Original');
-        $this->data->imagunO = $generator->getImgpath('original','Workflow','Original');
+        $this->data->img1024 = $generator->getImgpath('1024','Workflow','Original');
+        $this->data->img300 = $generator->getImgpath('300','Workflow','Original');
+        $this->data->img150 = $generator->getImgpath('150','Workflow','Original');
+        $this->data->imgOriginal = $generator->getImgpath('original','Workflow','Original');
 
         $this->data->author = $quotearray[1];
         $this->data->citate = $quotearray[0];
         
-        $this->data->elementaccordion = SupportedShortcodes::accordeon(5, '');
+        $this->data->elementaccordion = SupportedShortcodes::accordeon(5, '', $this->getTemplateParts('long-text-article'));
         $this->data->elementalert = SupportedShortcodes::alert('Content missing');
         $this->data->elementlatex = SupportedShortcodes::latex();
 
         /**
          * Load all the relevant Templates which rely on variables above
          */
+        $this->data->blockquote = $this->getTemplateParts('blockquote');
         $this->data->table = $this->getTemplateParts('table');
         $this->data->longarticle = $this->getTemplateParts('long-text-article');
-        $this->data->blockquote = $this->getTemplateParts('blockquote');
 
         $this->data->list = $this->getTemplateParts('list');
         $this->data->code = $this->getTemplateParts('code');
