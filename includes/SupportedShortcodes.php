@@ -13,11 +13,11 @@ class SupportedShortcodes
      * @param string $color - nat | phil | rw | med | tf
      * @return string
      */
-    public static function accordeon($count, $color)
+    public static function accordeon($count, $color, $content)
     {
         $extend = '';
         for ($i = 1; $i <= $count; $i++) {
-            $extend .= '[collapse color="' . $color . '" title="' . Rabbithole::getSentence(Rabbithole::getWords()) . '"]' . Rabbithole::getParagraphWithFormatting() . '[/collapse]';
+            $extend .= '[collapse color="' . $color . '" title="' . Text::getHeadline() . '"]' . $content . '[/collapse]';
         };
 
         $output = do_shortcode('[collapsibles]' . $extend . '[/collapsibles]');

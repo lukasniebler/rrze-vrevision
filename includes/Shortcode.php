@@ -10,7 +10,6 @@ defined('ABSPATH') || exit;
 class Shortcode
 {
     protected $pluginFile;
-    private $pluginname = '';
     private $data;
 
     public function __construct($pluginFile)
@@ -33,7 +32,7 @@ class Shortcode
     {
         //merge given attributes with default ones
         $shortcode_attr = shortcode_atts(array(
-            'type'                  => 'text',
+            'type'                  => 'test',
         ), $atts);
 
         $contenttype = $shortcode_attr['type'];
@@ -44,6 +43,10 @@ class Shortcode
 
     public function get_testcontent($type = 'other', $style = '')
     {
+        $generator = new Generator($this->pluginFile);
+        $textgenerator = new Text();
+
+        $quotearray = $textgenerator->getQuote();
         $testcontent_templates = Options::getTemplates();
 
         $contentnum = $type;
@@ -53,50 +56,44 @@ class Shortcode
         if (!isset($this->data))
             $this->data = new \stdClass();
 
+        /**
+         * Load all required variables first
+         */
         $this->data->contenttype = $type;
         $this->data->contentnum = $contentnum;
         $this->data->imgpath = trailingslashit(plugins_url('', $this->pluginFile));
+        
+        $this->data->unicode = $generator->getSpecialCharset('debug', '2');
+        $this->data->unicodeStandard = $generator->getSpecialCharset('default', "1");
 
-        $this->data->unicode = Rabbithole::getSpecialCharset('debug', '2');
-        $this->data->unicodeStandard = Rabbithole::getSpecialCharset('default', "1");
+        $this->data->gettext = $textgenerator->getQuote();
+        
+        $this->data->img1024 = $generator->getImgpath('1024','Workflow','Original');
+        $this->data->img300 = $generator->getImgpath('300','Workflow','Original');
+        $this->data->img150 = $generator->getImgpath('150','Workflow','Original');
+        $this->data->imgOriginal = $generator->getImgpath('original','Workflow','Original');
 
-        $this->data->elementaccordion = SupportedShortcodes::accordeon(10, '');
-        $this->data->elementalert = SupportedShortcodes::alert(Rabbithole::getSentence(Rabbithole::getWords()));
+        $this->data->author = $quotearray[1];
+        $this->data->citate = $quotearray[0];
+        
+        $this->data->elementaccordion = SupportedShortcodes::accordeon(5, '', $this->getTemplateParts('long-text-article'));
+        $this->data->elementalert = SupportedShortcodes::alert('Content missing');
         $this->data->elementlatex = SupportedShortcodes::latex();
+
+        /**
+         * Load all the relevant Templates which rely on variables above
+         */
+        $this->data->blockquote = $this->getTemplateParts('blockquote');
         $this->data->table = $this->getTemplateParts('table');
         $this->data->longarticle = $this->getTemplateParts('long-text-article');
-        $this->data->image = $this->getTemplateParts('image');
-        $this->data->blockquote = $this->getTemplateParts('blockquote');
+
+        $this->data->list = $this->getTemplateParts('list');
+        $this->data->code = $this->getTemplateParts('code');
         $this->data->imglalign = $this->getTemplateParts('img-lalign');
         $this->data->imgralign = $this->getTemplateParts('img-ralign');
         $this->data->imgcenter = $this->getTemplateParts('img-center');
-        $this->data->list = $this->getTemplateParts('list');
-
-        /**
-         * Following Arrays are getting 10 stacks of their elements to create individual content-placeholders.
-         */
-        $contentTypeParagraph = array(
-            'paragraph',
-            'citate',
-        );
-
-        $contentTypeSentence = array(
-            'h',
-            'citate',
-            'caption',
-            'list',
-        );
-
-        for ($i = 1; $i <= 10; $i++) {
-            foreach ($contentTypeParagraph as $value) {
-                $this->data->{$value . $i} = Rabbithole::getParagraph(Rabbithole::getWords());
-            }
-            foreach ($contentTypeSentence as $value) {
-                $this->data->{$value . $i} = Rabbithole::getSentence(Rabbithole::getWords());
-            }
-            $this->data->{'htmlparagraph' . $i} = Rabbithole::getParagraphWithFormatting();
-        }
-
+        $this->data->image = $this->getTemplateParts('image');
+  
         if (!empty($name)) {
             $template = $type . '/' . $name;
         } else {
@@ -115,8 +112,6 @@ class Shortcode
     public function getTemplateParts($type = '')
     {
         $testcontent_templates = Options::getTemplates();
-
-        $contentnum = $type;
         if (!isset($testcontent_templates[$type])) {
             $type = 'other';
         }

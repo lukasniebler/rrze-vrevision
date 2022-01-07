@@ -61,6 +61,7 @@ class Options
             ),
             "long-text-article" => array(
                 "long-text-article-core",
+                "long-text-article-criminal",
             ),
             "image" => array(
                 "default-image",
@@ -72,13 +73,16 @@ class Options
                 "rightalign-image",
             ),
             "img-center" => array(
-                "imgcenter_image",
+                "imgcenter-image",
             ),
             "blockquote" => array(
                 "default-blockquote",
             ),
             "list" => array(
                 "standardlists",
+            ),
+            "code" => array(
+                "standardcode",
             ),
         );
         return $testcontent_templates;
