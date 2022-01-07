@@ -76,7 +76,7 @@ class Shortcode
         $this->data->author = $quotearray[1];
         $this->data->citate = $quotearray[0];
         
-        $this->data->elementaccordion = SupportedShortcodes::accordeon(10, '');
+        $this->data->elementaccordion = SupportedShortcodes::accordeon(5, '');
         $this->data->elementalert = SupportedShortcodes::alert('Content missing');
         $this->data->elementlatex = SupportedShortcodes::latex();
 

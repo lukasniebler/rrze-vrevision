@@ -71,7 +71,7 @@ class Text
             'Die Unaussprechlichen',
             'Können Krankheiten entstigmatisiert werden?',
             'Was bedeutet das Wort "Tabu"?',
-            '<strong>Tabu</strong>la rasa',
+            'Tabula rasa',
             'Die Lust am Ekel',
             'Weil es uns (vermeintlich) nützt',
             'Schweigen aus Scham',
@@ -81,7 +81,7 @@ class Text
             'Perlenkette unter Wasser',
             'Schwarzer Raucher',
             'Unter der Erde',
-            '<strong>Zweit</strong>besetzung',
+            'Zweitbesetzung'
         );
         $randomInt = rand(0, count($headline)-1);
         $output = $headline[$randomInt];
