@@ -10,7 +10,6 @@ defined('ABSPATH') || exit;
 class Shortcode
 {
     protected $pluginFile;
-    private $pluginname = '';
     private $data;
 
     public function __construct($pluginFile)
@@ -106,8 +105,6 @@ class Shortcode
     public function getTemplateParts($type = '')
     {
         $testcontent_templates = Options::getTemplates();
-
-        $contentnum = $type;
         if (!isset($testcontent_templates[$type])) {
             $type = 'other';
         }

@@ -7,7 +7,6 @@ defined('ABSPATH') || exit;
 class Generator
 {
     protected $pluginFile;
-    private $data;
 
     public function __construct($pluginFile)
     {
