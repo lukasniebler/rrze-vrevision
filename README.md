@@ -33,15 +33,6 @@ Creates content with all existing unicode-Symbols (!10400+ Unicode Characters - 
 [rrze_vrevision type="unicode"]
 ```
 
-### type="html-text"
-
-Creates content with all available html-Formatting-Options. Html-Tags can be extended in file Rabbithole.php on Line 97.
-
-```bash
-# type="html-text"
-[rrze_vrevision type="html-text"] | Creates headlines and paragraphs with common html-formatting. Including underlined text, bolt text, etc...
-```
-
 ## Determine Characters per line
 
 You can target Span-Elements within their paragraphs.
@@ -52,10 +43,6 @@ These numbers are within the recommended range for best readability.
 ## License
 
 This project is licensed under GNU general public license.
-
-## Roadmap
-
--   Serve images in different resolutions and alignments
 
 ## Acknowledgment
 

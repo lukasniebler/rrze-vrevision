@@ -61,6 +61,7 @@ class Options
             ),
             "long-text-article" => array(
                 "long-text-article-core",
+                "long-text-article-criminal",
             ),
             "image" => array(
                 "default-image",
