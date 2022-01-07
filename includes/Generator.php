@@ -6,6 +6,13 @@ defined('ABSPATH') || exit;
 
 class Generator
 {
+    protected $pluginFile;
+    private $data;
+
+    public function __construct($pluginFile)
+    {
+        $this->pluginFile = $pluginFile;
+    }
     /**
      * Creates Unicode-Characters as String with html paragraph-tag
      *

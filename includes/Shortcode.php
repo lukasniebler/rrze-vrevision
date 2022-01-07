@@ -12,7 +12,6 @@ class Shortcode
     protected $pluginFile;
     private $pluginname = '';
     private $data;
-    private $generator = new Generator;
 
     public function __construct($pluginFile)
     {
@@ -45,6 +44,7 @@ class Shortcode
 
     public function get_testcontent($type = 'other', $style = '')
     {
+        $generator = new Generator($this->pluginFile);
         $testcontent_templates = Options::getTemplates();
 
         $contentnum = $type;
@@ -58,33 +58,33 @@ class Shortcode
         $this->data->contentnum = $contentnum;
         $this->data->imgpath = trailingslashit(plugins_url('', $this->pluginFile));
 
-        $this->data->unicode = $this->generator->getSpecialCharset('debug', '2');
-        $this->data->unicodeStandard = $this->generator->getSpecialCharset('default', "1");
-
+        $this->data->unicode = $generator->getSpecialCharset('debug', '2');
+        $this->data->unicodeStandard = $generator->getSpecialCharset('default', "1");
+        
+        $this->data->elementaccordion = SupportedShortcodes::accordeon(10, '');
+        $this->data->elementalert = SupportedShortcodes::alert('Content missing');
+        $this->data->elementlatex = SupportedShortcodes::latex();
         $this->data->table = $this->getTemplateParts('table');
         $this->data->longarticle = $this->getTemplateParts('long-text-article');
-        $this->data->image = $this->getTemplateParts('image');
         $this->data->blockquote = $this->getTemplateParts('blockquote');
 
         $this->data->list = $this->getTemplateParts('list');
         $this->data->code = $this->getTemplateParts('code');
-        $this->data->test = $this->generator->getImgNames("Workflow1024");
-        $this->data->imagunA = $this->generator->getImgpath('1024','Workflow','Original');
+        $this->data->test = $generator->getImgNames("Workflow1024");
+        $this->data->imagunA = $generator->getImgpath('1024','Workflow','Original');
        
         //$this->data->imagun1024 = $this->getImgpath('1024','Workflow','Original');
-        $this->data->imagunB = $this->generator->getImgpath('300','Workflow','Original');
-        $this->data->imagunC = $this->generator->getImgpath('150','Workflow','Original');
-        $this->data->imagunO = $this->generator->getImgpath('original','Workflow','Original');
+        $this->data->imagunB = $generator->getImgpath('300','Workflow','Original');
+        $this->data->imagunC = $generator->getImgpath('150','Workflow','Original');
+        $this->data->imagunO = $generator->getImgpath('original','Workflow','Original');
         $this->data->imglalign = $this->getTemplateParts('img-lalign');
         $this->data->imgralign = $this->getTemplateParts('img-ralign');
         $this->data->imgcenter = $this->getTemplateParts('img-center');
+        $this->data->image = $this->getTemplateParts('image');
 
         //$this->data->img1024 = $this->
 
-        /**
-         * Following Arrays are getting 10 stacks of their elements to create individual content-placeholders.
-         */
-
+  
         if (!empty($name)) {
             $template = $type . '/' . $name;
         } else {
@@ -124,5 +124,5 @@ class Shortcode
             $msg = "<!-- No Entry found for Error " . $type . "-->";
             return $msg;
         }
-    }  
+    }
 }
