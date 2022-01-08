@@ -45,6 +45,7 @@ class Shortcode
     {
         $generator = new Generator($this->pluginFile);
         $textgenerator = new Text();
+        $supShortcodeClass = new SupportedShortcodes($this->pluginFile);
 
         $quotearray = $textgenerator->getQuote();
         $testcontent_templates = Options::getTemplates();
@@ -76,7 +77,7 @@ class Shortcode
         $this->data->author = $quotearray[1];
         $this->data->citate = $quotearray[0];
         
-        $this->data->elementaccordion = SupportedShortcodes::accordeon(5, '', $this->getTemplateParts('text'));
+        $this->data->elementaccordion = $supShortcodeClass->accordeon(5, '');
         $this->data->elementalert = SupportedShortcodes::alert('Content missing');
         $this->data->elementlatex = SupportedShortcodes::latex();
 
