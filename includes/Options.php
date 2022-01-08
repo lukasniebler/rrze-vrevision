@@ -38,18 +38,6 @@ class Options
     {
 
         $testcontent_templates = array(
-            "dynamic-text" => array(
-                "pure-text",
-                "text-bq",
-                "standard",
-            ),
-            "dynamic-html-text" => array(
-                "formatted-bq",
-                "pure-formatted",
-            ),
-            "dynamic-table" => array(
-                "dynamic-table-core",
-            ),
             "unicode" => array(
                 "all-unicode",
             ),
@@ -61,7 +49,6 @@ class Options
             ),
             "long-text-article" => array(
                 "long-text-article-core",
-                "long-text-article-criminal",
             ),
             "image" => array(
                 "default-image",
@@ -83,6 +70,11 @@ class Options
             ),
             "code" => array(
                 "standardcode",
+            ),
+            "text" => array(
+                "kriminalfall",
+                "henry-d-thoreau",
+                "marie-antoinette",
             ),
         );
         return $testcontent_templates;
