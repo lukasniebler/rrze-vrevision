@@ -87,6 +87,8 @@ class Shortcode
         $this->data->blockquote = $this->getTemplateParts('blockquote');
         $this->data->table = $this->getTemplateParts('table');
         $this->data->longarticle = $this->getTemplateParts('long-text-article');
+        $this->data->textmedium = $this->getTemplateParts('text-medium');
+        $this->data->textlong = $this->getTemplateParts('text-long');
 
         $this->data->list = $this->getTemplateParts('list');
         $this->data->code = $this->getTemplateParts('code');
