@@ -38,7 +38,7 @@ class Generator
         return $paragraph;
     }
 
-        /**
+    /**
      * Returns an image-Filename out of the Workflow1024 Folder for reference.
      *
      * @return string
@@ -46,10 +46,11 @@ class Generator
     public function getImgNames($targetDir){
         $dir = plugin_dir_path( __DIR__ );
         $path = $dir."assets/img/".$targetDir;
-        $files = array_diff(scandir($path), array('..', '.'));
-        $randomNumber = rand(2, count($files));
-        
-        return $files[$randomNumber] ?? null;
+        $files = array_diff(preg_grep('/^([^.])/', scandir($path)), array('..', '.'));
+        $arrlength = count($files)-1;
+        $randomNumber = rand(0, $arrlength);
+        $output = $files[$randomNumber] ?? 'imgnotfound';
+        return $output;
     }
 
     /**
