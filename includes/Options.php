@@ -71,11 +71,18 @@ class Options
             "code" => array(
                 "standardcode",
             ),
-            "text" => array(
+            "text-long" => array(
                 "kriminalfall",
                 "henry-d-thoreau",
                 "marie-antoinette",
             ),
+            "text-medium" => array(
+                "darwin-entstehung-der-arten-1",
+                "darwin-entstehung-der-arten-2",
+                "darwin-entstehung-der-arten-3",
+                "darwin-entstehung-der-arten-4",
+                "darwin-entstehung-der-arten-5",
+            )
         );
         return $testcontent_templates;
     }
