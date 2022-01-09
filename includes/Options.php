@@ -24,8 +24,6 @@ class Options
                 'RRZE 2019',
             ],
         );
-
-
         return $known_themes;
     }
 
@@ -47,8 +45,11 @@ class Options
             "table" => array(
                 "table-core",
             ),
-            "long-text-article" => array(
+            "post" => array(
                 "long-text-article-core",
+                "long-text-article-2",
+                "long-text-article-3",
+                "long-text-article-4",
             ),
             "image" => array(
                 "default-image",
