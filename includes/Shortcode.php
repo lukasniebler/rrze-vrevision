@@ -33,15 +33,17 @@ class Shortcode
         //merge given attributes with default ones
         $shortcode_attr = shortcode_atts(array(
             'type'                  => 'test',
+            'color'                 => '',
         ), $atts);
 
         $contenttype = $shortcode_attr['type'];
+        $contentcolor = $shortcode_attr['color'];
 
-        $html = $this->get_testcontent($contenttype);
+        $html = $this->get_testcontent($contenttype, $contentcolor);
         return $html;
     }
 
-    public function get_testcontent($type = 'other', $style = '')
+    public function get_testcontent($type = 'other', $color = '')
     {
         $generator = new Generator($this->pluginFile);
         $textgenerator = new Text();
@@ -77,8 +79,8 @@ class Shortcode
         $this->data->author = $quotearray[1];
         $this->data->citate = $quotearray[0];
         
-        $this->data->elementaccordion = $supShortcodeClass->accordeon(5, '');
-        $this->data->elementalert = SupportedShortcodes::alert('Content missing');
+        $this->data->elementaccordion = $supShortcodeClass->accordeon(5, $color);
+        $this->data->elementalert = SupportedShortcodes::alert(Text::getSentence('gutenberg'));
         $this->data->elementlatex = SupportedShortcodes::latex();
 
         /**
@@ -86,10 +88,12 @@ class Shortcode
          */
         $this->data->blockquote = $this->getTemplateParts('blockquote');
         $this->data->table = $this->getTemplateParts('table');
-        $this->data->longarticle = $this->getTemplateParts('long-text-article');
+        $this->data->longarticle = $this->getTemplateParts('post');
         $this->data->textmedium = $this->getTemplateParts('text-medium');
+        $this->data->textmedium2 = $this->getTemplateParts('text-medium');
         $this->data->textlong = $this->getTemplateParts('text-long');
-
+        $this->data->textlong2 = $this->getTemplateParts('text-long');
+        
         $this->data->list = $this->getTemplateParts('list');
         $this->data->code = $this->getTemplateParts('code');
         $this->data->imglalign = $this->getTemplateParts('img-lalign');

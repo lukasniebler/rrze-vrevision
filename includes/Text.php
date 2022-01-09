@@ -6,6 +6,10 @@ defined('ABSPATH') || exit;
 
 class Text
 {
+    public static function getRandInt($array){
+        return rand(0, count($array)-1);
+    }
+
     public static function getQuote()
     {
         $quotes = array(
@@ -83,8 +87,28 @@ class Text
             'Unter der Erde',
             'Zweitbesetzung'
         );
-        $randomInt = rand(0, count($headline)-1);
+        $randomInt = Self::getRandInt($headline);
         $output = $headline[$randomInt];
+        return $output;
+    }
+
+    public static function getSentence($type = 'notice'){
+        $output='no output set';
+        $notice = array(
+            'Bitte melden Sie sich vor den Veranstaltungen in unserem Sekretariat an.',
+            'Die Wiederholungsklausuren finden erst im nächsten Wintersemester statt.',
+            'Bitte beachten Sie die Teilnehmergrenze für Gruppenanmeldungen',
+            'Die Ausstellung endet am 15. Oktober',
+        );
+        switch($type){
+            case 'gutenberg':
+                $output = 'Die deutschen Beispieltexte sind Auszüge aus dem Gutenberg-Projekt. Mehr Informationen finden Sie im Internet auf der <a href="https://www.projekt-gutenberg.org">Seite vom Projekt Gutenberg</a>.';
+                break;
+            case 'notice':
+                $randomInt = Self::getRandInt($notice);
+                $output = $notice[$randomInt];
+                break;
+        }
         return $output;
     }
 }
