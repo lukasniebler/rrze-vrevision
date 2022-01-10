@@ -49,7 +49,7 @@ class Generator
         $files = array_diff(preg_grep('/^([^.])/', scandir($path)), array('..', '.'));
         $arrlength = count($files)-1;
         $randomNumber = rand(0, $arrlength);
-        $output = $files[$randomNumber] ?? 'imgnotfound';
+        $output = $files[$randomNumber] ?? 'P1030973.JPG';
         return $output;
     }
 
