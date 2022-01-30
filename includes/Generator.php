@@ -49,7 +49,7 @@ class Generator
         $files = array_diff(preg_grep('/^([^.])/', scandir($path)), array('..', '.'));
         $arrlength = count($files)-1;
         $randomNumber = rand(0, $arrlength);
-        $output = $files[$randomNumber] ?? 'P1030973.JPG';
+        $output = $files[$randomNumber] ?? 'Function getImgNames could not retrieve the filename.';
         return $output;
     }
 
@@ -58,26 +58,34 @@ class Generator
      *
      * @param string $res Resolution | 1024, 300, 150 or original
      * @param string $foldername | prefix of Folder with different resolutions. f.e. imagefolder300 imagefolder1024 etc.
-     * @param string $ref | Foldername of original-files
+     * @param string $imgformat | JPEG or SVG
+     * @param string $imgcontent | Occasion of content. For example default | mint | psychology...
      * @return string returns a imagepath
      */
-    public function getImgpath($res, $foldername, $ref){
+    public function getImgpath($res, $foldername, $imgformat, $imgcontent){
         $resolution = '';
-        switch($res) {
-            case '1024':
-                $resolution = $foldername.'1024';
-                break;
-            case '300':
-                $resolution = $foldername.'300';
-                break;
-            case '150':
-                $resolution = $foldername.'150';
-                break;
-            case 'original':
-                $resolution = $ref;
-                break;
+        if ($imgformat === 'svg'){
+            $resolution = 'svg';
+        } else if ($imgformat === 'jpeg') {
+            switch($res) {
+                case '1024':
+                    $resolution = $foldername.'1024';
+                    break;
+                case '300':
+                    $resolution = $foldername.'300';
+                    break;
+                case '150':
+                    $resolution = $foldername.'150';
+                    break;
+                case 'original':
+                    $resolution = $foldername;
+                    break;
+            }
+        } else { 
+            return 'The selected image file format is not supported.';
         }
-        $urlpartial = 'assets/img/'.$resolution.'/'.$this->getImgNames($resolution);
+        
+        $urlpartial = 'assets/img/'.$imgcontent.$resolution.'/'.$this->getImgNames($resolution);
         $dir = untrailingslashit(plugins_url($urlpartial, $this->pluginFile));
         return $dir;
     }
