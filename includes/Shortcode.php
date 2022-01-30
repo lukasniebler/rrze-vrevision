@@ -32,9 +32,9 @@ class Shortcode
     {
         //merge given attributes with default ones
         $shortcode_attr = shortcode_atts(array(
-            'type'                  => 'test',
+            'type'                  => 'post',
             'color'                 => '',
-            'imgcontent'            => 'default',
+            'imgcontent'            => 'mint',
             'imgformat'             => 'jpeg',
         ), $atts);
 
@@ -48,9 +48,9 @@ class Shortcode
     }
 
     public function get_testcontent(
-        $type = 'other',
+        $type = 'post',
         $color = '',
-        $imgcontent = 'default',
+        $imgcontent = 'mint',
         $imgformat = 'jpeg'
     ) {
         $generator = new Generator($this->pluginFile);
