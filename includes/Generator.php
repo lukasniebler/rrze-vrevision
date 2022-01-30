@@ -43,9 +43,9 @@ class Generator
      *
      * @return string
      */
-    public function getImgNames($targetDir){
+    public function getImgNames($foldername, $targetDir){
         $dir = plugin_dir_path( __DIR__ );
-        $path = $dir."assets/img/".$targetDir;
+        $path = $dir."assets/img/".$foldername.'/'.$targetDir;
         $files = array_diff(preg_grep('/^([^.])/', scandir($path)), array('..', '.'));
         $arrlength = count($files)-1;
         $randomNumber = rand(0, $arrlength);
@@ -62,30 +62,30 @@ class Generator
      * @param string $imgcontent | Occasion of content. For example default | mint | psychology...
      * @return string returns a imagepath
      */
-    public function getImgpath($res, $foldername, $imgformat, $imgcontent){
+    public function getImgpath($res, $imgformat, $imgcontent){
         $resolution = '';
         if ($imgformat === 'svg'){
             $resolution = 'svg';
         } else if ($imgformat === 'jpeg') {
             switch($res) {
                 case '1024':
-                    $resolution = $foldername.'1024';
+                    $resolution = $imgcontent.'1024';
                     break;
                 case '300':
-                    $resolution = $foldername.'300';
+                    $resolution = $imgcontent.'300';
                     break;
                 case '150':
-                    $resolution = $foldername.'150';
+                    $resolution = $imgcontent.'150';
                     break;
                 case 'original':
-                    $resolution = $foldername;
+                    $resolution = $imgcontent;
                     break;
             }
         } else { 
             return 'The selected image file format is not supported.';
         }
         
-        $urlpartial = 'assets/img/'.$imgcontent.$resolution.'/'.$this->getImgNames($resolution);
+        $urlpartial = 'assets/img/'.$imgcontent.'/'.$resolution.'/'.$this->getImgNames($imgcontent, $resolution);
         $dir = untrailingslashit(plugins_url($urlpartial, $this->pluginFile));
         return $dir;
     }

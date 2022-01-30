@@ -79,10 +79,10 @@ class Shortcode
 
         $this->data->gettext = $textgenerator->getQuote();
 
-        $this->data->img1024 = $generator->getImgpath('1024', $imgcontent, $imgformat, $imgcontent);
-        $this->data->img300 = $generator->getImgpath('300', $imgcontent, $imgformat, $imgcontent);
-        $this->data->img150 = $generator->getImgpath('150', $imgcontent, $imgformat, $imgcontent);
-        $this->data->imgOriginal = $generator->getImgpath('original', $imgcontent, $imgformat, $imgcontent);
+        $this->data->img1024 = $generator->getImgpath('1024', $imgformat, $imgcontent);
+        $this->data->img300 = $generator->getImgpath('300', $imgformat, $imgcontent);
+        $this->data->img150 = $generator->getImgpath('150', $imgformat, $imgcontent);
+        $this->data->imgOriginal = $generator->getImgpath('original', $imgformat, $imgcontent);
 
         $this->data->author = $quotearray[1];
         $this->data->citate = $quotearray[0];
