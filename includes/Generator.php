@@ -66,6 +66,7 @@ class Generator
         $resolution = '';
         if ($imgformat === 'svg'){
             $resolution = 'svg';
+            $urlpartial = 'assets/img/default/'.$resolution.'/'.$this->getImgNames('default', $resolution);
         } else if ($imgformat === 'jpeg') {
             switch($res) {
                 case '1024':
@@ -81,13 +82,12 @@ class Generator
                     $resolution = $imgcontent;
                     break;
             }
+              $urlpartial = 'assets/img/'.$imgcontent.'/'.$resolution.'/'.$this->getImgNames($imgcontent, $resolution);
         } else { 
             return 'The selected image file format is not supported.';
         }
         
-        $urlpartial = 'assets/img/'.$imgcontent.'/'.$resolution.'/'.$this->getImgNames($imgcontent, $resolution);
         $dir = untrailingslashit(plugins_url($urlpartial, $this->pluginFile));
         return $dir;
     }
-
 }
