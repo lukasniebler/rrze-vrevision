@@ -34,17 +34,25 @@ class Shortcode
         $shortcode_attr = shortcode_atts(array(
             'type'                  => 'test',
             'color'                 => '',
+            'imgcontent'            => 'default',
+            'imgformat'             => 'jpeg',
         ), $atts);
 
         $contenttype = $shortcode_attr['type'];
         $contentcolor = $shortcode_attr['color'];
+        $imgcontent = $shortcode_attr['imgcontent'];
+        $imgformat = $shortcode_attr['imgformat'];
 
-        $html = $this->get_testcontent($contenttype, $contentcolor);
+        $html = $this->get_testcontent($contenttype, $contentcolor, $imgcontent, $imgformat);
         return $html;
     }
 
-    public function get_testcontent($type = 'other', $color = '')
-    {
+    public function get_testcontent(
+        $type = 'other',
+        $color = '',
+        $imgcontent = 'default',
+        $imgformat = 'jpeg'
+    ) {
         $generator = new Generator($this->pluginFile);
         $textgenerator = new Text();
         $supShortcodeClass = new SupportedShortcodes($this->pluginFile);
@@ -65,20 +73,20 @@ class Shortcode
         $this->data->contenttype = $type;
         $this->data->contentnum = $contentnum;
         $this->data->imgpath = trailingslashit(plugins_url('', $this->pluginFile));
-        
+
         $this->data->unicode = $generator->getSpecialCharset('debug', '2');
         $this->data->unicodeStandard = $generator->getSpecialCharset('default', "1");
 
         $this->data->gettext = $textgenerator->getQuote();
-        
-        $this->data->img1024 = $generator->getImgpath('1024','Workflow','Original');
-        $this->data->img300 = $generator->getImgpath('300','Workflow','Original');
-        $this->data->img150 = $generator->getImgpath('150','Workflow','Original');
-        $this->data->imgOriginal = $generator->getImgpath('original','Workflow','Original');
+
+        $this->data->img1024 = $generator->getImgpath('1024', $imgformat, $imgcontent);
+        $this->data->img300 = $generator->getImgpath('300', $imgformat, $imgcontent);
+        $this->data->img150 = $generator->getImgpath('150', $imgformat, $imgcontent);
+        $this->data->imgOriginal = $generator->getImgpath('original', $imgformat, $imgcontent);
 
         $this->data->author = $quotearray[1];
         $this->data->citate = $quotearray[0];
-        
+
         $this->data->elementaccordion = $supShortcodeClass->accordeon(5, $color);
         $this->data->elementalert = SupportedShortcodes::alert(Text::getSentence('gutenberg'));
         $this->data->elementlatex = SupportedShortcodes::latex();
@@ -93,14 +101,14 @@ class Shortcode
         $this->data->textmedium2 = $this->getTemplateParts('text-medium');
         $this->data->textlong = $this->getTemplateParts('text-long');
         $this->data->textlong2 = $this->getTemplateParts('text-long');
-        
+
         $this->data->list = $this->getTemplateParts('list');
         $this->data->code = $this->getTemplateParts('code');
         $this->data->imglalign = $this->getTemplateParts('img-lalign');
         $this->data->imgralign = $this->getTemplateParts('img-ralign');
         $this->data->imgcenter = $this->getTemplateParts('img-center');
         $this->data->image = $this->getTemplateParts('image');
-  
+
         if (!empty($name)) {
             $template = $type . '/' . $name;
         } else {
