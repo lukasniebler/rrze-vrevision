@@ -12,11 +12,15 @@ Without passing any arguments RRZEvRevision will display a set of test elements.
 
 ```bash
 #Default Shortcode
-[rrze_vrevision color=""]
+[rrze_vrevision color="" imgcontent="" imgformat=""]
 ```
 ### color=""
 The default value for color is "". It controls RRZE Elements color-values for Accordion display. Possible values are: ""|nat|phil|rw|med|tf
 ### type="post"
+### imgcontent
+Currently there is only default
+### imgformat
+jpeg | SVG
 
 Simulates a classic post or site-entry. This type includes text-content, accordions (RRZE Elements required), tables and block quotes.
 
