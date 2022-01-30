@@ -1,6 +1,6 @@
 # RRZE vRevision
 
-RRZE vRevision is a WordPress-Plugin for displaying filler test-content. RRZE vRevision currently requires German set as default language. More information about using this plugin in other languages see the information below Usage-Instructions.
+RRZE vRevision is a WordPress-Plugin for displaying filler- & testcontent. RRZE vRevision currently requires German set as default language. More information about using this plugin in other languages see the information below Usage-Instructions.
 
 ## Installation
 
@@ -8,8 +8,14 @@ Download the Plugin-Folder and install it within your WordPress Test environment
 
 ## Usage
 
-Without passing any arguments RRZEvRevision will display a set of test elements. This also includes RRZE-specific elements which rely on other Plugins like RRZE Elements.
+Without passing any arguments RRZEvRevision simulates example post content with images ("mint"). This also includes RRZE-specific elements which rely on other Plugins like RRZE Elements.
 
+```bash
+#Shortcode without attributes
+[rrze_vrevision]
+uses type="post" color="" imgcontent="mint" imgformat="jpeg"
+
+```
 ```bash
 #Default Shortcode
 [rrze_vrevision color="" imgcontent="" imgformat=""]
