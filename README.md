@@ -18,9 +18,15 @@ Without passing any arguments RRZEvRevision will display a set of test elements.
 The default value for color is "". It controls RRZE Elements color-values for Accordion display. Possible values are: ""|nat|phil|rw|med|tf
 ### type="post"
 ### imgcontent
-Currently there is only default
+default | Motive Istanbul
+mint | Motive biology / medicine / mint
+medicine
+microscopy
+
+Images are from [National Cancer Institute (Unsplash)](https://unsplash.com/@nci).
 ### imgformat
 jpeg | SVG
+SVG's are from [Manypixels](https://manypixels.co)
 
 Simulates a classic post or site-entry. This type includes text-content, accordions (RRZE Elements required), tables and block quotes.
 
