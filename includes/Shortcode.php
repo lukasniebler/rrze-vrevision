@@ -43,7 +43,7 @@ class Shortcode
         $imgcontent = $shortcode_attr['imgcontent'];
         $imgformat = $shortcode_attr['imgformat'];
 
-        $html = $this->get_testcontent($contenttype, $contentcolor);
+        $html = $this->get_testcontent($contenttype, $contentcolor, $imgcontent, $imgformat);
         return $html;
     }
 
