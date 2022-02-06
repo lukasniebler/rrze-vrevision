@@ -32,10 +32,10 @@ class Shortcode
     {
         //merge given attributes with default ones
         $shortcode_attr = shortcode_atts(array(
-            'type'                  => 'post',
-            'color'                 => '',
-            'imgcontent'            => 'mint',
-            'imgformat'             => 'jpeg',
+            'type'                  => get_option('vrevision_modus'),
+            'color'                 => get_option('vrevision_color'),
+            'imgcontent'            => get_option('vrevision_theme'),
+            'imgformat'             => get_option('vrevision_imgformat')
         ), $atts);
 
         $contenttype = $shortcode_attr['type'];
@@ -101,6 +101,7 @@ class Shortcode
         $this->data->textmedium2 = $this->getTemplateParts('text-medium');
         $this->data->textlong = $this->getTemplateParts('text-long');
         $this->data->textlong2 = $this->getTemplateParts('text-long');
+        $this->data->textshort = $this->getTemplateParts('text-short');
 
         $this->data->list = $this->getTemplateParts('list');
         $this->data->code = $this->getTemplateParts('code');

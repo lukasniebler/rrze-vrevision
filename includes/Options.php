@@ -83,7 +83,14 @@ class Options
                 "darwin-entstehung-der-arten-3",
                 "darwin-entstehung-der-arten-4",
                 "darwin-entstehung-der-arten-5",
-            )
+            ),
+            "text-short" => array(
+                "short-darwin-entstehung-der-arten-1",
+                "short-darwin-entstehung-der-arten-2",
+                "short-darwin-entstehung-der-arten-3",
+                "short-darwin-entstehung-der-arten-4",
+                "short-darwin-entstehung-der-arten-5",
+            ),
         );
         return $testcontent_templates;
     }
