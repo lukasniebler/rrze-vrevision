@@ -66,7 +66,7 @@ class Generator
         $resolution = '';
         if ($imgformat === 'svg'){
             $resolution = 'svg';
-            $urlpartial = 'assets/img/default/'.$resolution.'/'.$this->getImgNames('default', $resolution);
+            $urlpartial = 'assets/img/istanbul/'.$resolution.'/'.$this->getImgNames('istanbul', $resolution);
         } else if ($imgformat === 'jpeg') {
             switch($res) {
                 case '1024':
