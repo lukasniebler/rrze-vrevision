@@ -30,5 +30,6 @@ class Main
         $shortcode->onLoaded();
 
         new Settings();
+        new Helper();
     }
 }
