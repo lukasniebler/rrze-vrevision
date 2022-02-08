@@ -47,8 +47,8 @@ class Generator
         $dir = plugin_dir_path( __DIR__ );
         $path = $dir."assets/img/".$foldername.'/'.$targetDir;
         $files = array_diff(preg_grep('/^([^.])/', scandir($path)), array('..', '.'));
-        $arrlength = count($files)-1;
-        $randomNumber = rand(0, $arrlength);
+        $arrlength = count($files)+1;
+        $randomNumber = rand(2, $arrlength);
         $output = $files[$randomNumber] ?? 'Function_getImgNames_could_not_retrieve_the_filename.';
         return $output;
     }
