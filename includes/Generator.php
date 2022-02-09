@@ -43,11 +43,15 @@ class Generator
      *
      * @return string
      */
-    public function getImgNames($foldername, $targetDir){
+    public function getImgNames($foldername, $imgformat){
+        if ($imgformat === 'svg'){
+            $foldername = 'svg';
+        } else {};
         $dir = plugin_dir_path( __DIR__ );
-        $path = $dir."assets/img/".$foldername.'/'.$targetDir;
+        $path = $dir."assets/img/".$foldername.'/'.$foldername;
         $files = array_diff(preg_grep('/^([^.])/', scandir($path)), array('..', '.'));
-        $arrlength = count($files)+1;
+        $files = array_values($files);
+        $arrlength = count($files)-1;
         $randomNumber = rand(2, $arrlength);
         $output = $files[$randomNumber] ?? 'Function_getImgNames_could_not_retrieve_the_filename.';
         return $output;
@@ -62,11 +66,11 @@ class Generator
      * @param string $imgcontent | Occasion of content. For example default | mint | psychology...
      * @return string returns a imagepath
      */
-    public function getImgpath($res, $imgformat, $imgcontent){
+    public function getImgpath($res, $imgformat, $imgcontent, $filename){
         $resolution = '';
         if ($imgformat === 'svg'){
             $resolution = 'svg';
-            $urlpartial = 'assets/img/istanbul/'.$resolution.'/'.$this->getImgNames('istanbul', $resolution);
+            $urlpartial = 'assets/img/svg/'.$resolution.'/'.$filename;
         } else if ($imgformat === 'jpeg') {
             switch($res) {
                 case '1024':
@@ -82,7 +86,7 @@ class Generator
                     $resolution = $imgcontent;
                     break;
             }
-              $urlpartial = 'assets/img/'.$imgcontent.'/'.$resolution.'/'.$this->getImgNames($imgcontent, $resolution);
+              $urlpartial = 'assets/img/'.$imgcontent.'/'.$resolution.'/'.$filename;
         } else { 
             return 'The selected image file format is not supported.';
         }
