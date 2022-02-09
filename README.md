@@ -1,6 +1,6 @@
 # RRZE vRevision
 
-RRZE vRevision erstellt Musterinhalte und optional auch einfache Testinhalte.
+RRZE vRevision erstellt Musterinhalte und einfache Testinhalte.
 
 Der Default wird in den Plugin-Einstellungen unter Dashboard > Einstellungen > RRZEvRevision definiert.
 
@@ -59,14 +59,16 @@ rrze-vrevision-45-characters | 50 | 60 | 72
 
 Die Zahlen liegen innerhalb der Empfehlung für gute Usability.
 
-## License
+## Lizenz
 
 This project is licensed under GNU general public license.
 
-## Acknowledgment
+## Danksagung
 
 Besonderer Dank gilt Wolfgang Wiese und Rolf v.d. Forst und meinen Kollegen am RRZE für die zahlreichen Rückmeldungen und Hilfestellungen bei der Umsetzung.
 
 Das PlugIn nutzt im Kern das Rückgrat von [Fau-Fehlermeldungen](https://github.com/RRZE-Webteam/FAU-Fehlermeldungen), ein weiteres Plugin des RRZE Webteams.
+
+## Feedback
 
 Verbesserungsvorschläge und Fehlermeldungen können gerne als Issues angemerkt werden.
