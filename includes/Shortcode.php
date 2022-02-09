@@ -55,8 +55,12 @@ class Shortcode
     ) {
         $generator = new Generator($this->pluginFile);
         $textgenerator = new Text();
+        $imgname1 = $generator->getImgNames($imgcontent, $imgformat);
+        $imgname2 = $generator->getImgNames($imgcontent, $imgformat);
+        $imgname3 = $generator->getImgNames($imgcontent, $imgformat);
+        $imgname4 = $generator->getImgNames($imgcontent, $imgformat);
         $supShortcodeClass = new SupportedShortcodes($this->pluginFile);
-
+        
         $quotearray = $textgenerator->getQuote();
         $testcontent_templates = Options::getTemplates();
 
@@ -79,10 +83,25 @@ class Shortcode
 
         $this->data->gettext = $textgenerator->getQuote();
 
-        $this->data->img1024 = $generator->getImgpath('1024', $imgformat, $imgcontent);
-        $this->data->img300 = $generator->getImgpath('300', $imgformat, $imgcontent);
-        $this->data->img150 = $generator->getImgpath('150', $imgformat, $imgcontent);
-        $this->data->imgOriginal = $generator->getImgpath('original', $imgformat, $imgcontent);
+        $this->data->img1024_1 = $generator->getImgpath('1024', $imgformat, $imgcontent, $imgname1);
+        $this->data->img300_1 = $generator->getImgpath('300', $imgformat, $imgcontent, $imgname1);
+        $this->data->img150_1 = $generator->getImgpath('150', $imgformat, $imgcontent, $imgname1);
+        $this->data->imgOriginal_1 = $generator->getImgpath('original', $imgformat, $imgcontent, $imgname1);
+
+        $this->data->img1024_2 = $generator->getImgpath('1024', $imgformat, $imgcontent, $imgname2);
+        $this->data->img300_2 = $generator->getImgpath('300', $imgformat, $imgcontent, $imgname2);
+        $this->data->img150_2 = $generator->getImgpath('150', $imgformat, $imgcontent, $imgname2);
+        $this->data->imgOriginal_2 = $generator->getImgpath('original', $imgformat, $imgcontent, $imgname2);
+
+        $this->data->img1024_3 = $generator->getImgpath('1024', $imgformat, $imgcontent, $imgname3);
+        $this->data->img300_3 = $generator->getImgpath('300', $imgformat, $imgcontent, $imgname3);
+        $this->data->img150_3 = $generator->getImgpath('150', $imgformat, $imgcontent, $imgname3);
+        $this->data->imgOriginal_3 = $generator->getImgpath('original', $imgformat, $imgcontent, $imgname3);
+
+        $this->data->img1024_4 = $generator->getImgpath('1024', $imgformat, $imgcontent, $imgname4);
+        $this->data->img300_4 = $generator->getImgpath('300', $imgformat, $imgcontent, $imgname4);
+        $this->data->img150_4 = $generator->getImgpath('150', $imgformat, $imgcontent, $imgname4);
+        $this->data->imgOriginal_4 = $generator->getImgpath('original', $imgformat, $imgcontent, $imgname4);
 
         $this->data->author = $quotearray[1];
         $this->data->citate = $quotearray[0];
