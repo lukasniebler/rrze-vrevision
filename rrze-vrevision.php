@@ -50,7 +50,7 @@ add_action('plugins_loaded', __NAMESPACE__ . '\loaded');
  */
 function loadTextdomain()
 {
-    load_plugin_textdomain('fau-fehlermeldungen', false, sprintf('%s/languages/', dirname(plugin_basename(__FILE__))));
+    load_plugin_textdomain('rrze-vrevision', false, sprintf('%s/languages/', dirname(plugin_basename(__FILE__))));
 }
 
 /**
@@ -61,9 +61,9 @@ function systemRequirements()
 {
     $error = '';
     if (version_compare(PHP_VERSION, RRZE_PHP_VERSION, '<')) {
-        $error = sprintf(__('The server is running PHP version %1$s. The Plugin requires at least PHP version %2$s.', 'fau-fehlermeldungen'), PHP_VERSION, RRZE_PHP_VERSION);
+        $error = sprintf(__('The server is running PHP version %1$s. The Plugin requires at least PHP version %2$s.', 'rrze-vrevision'), PHP_VERSION, RRZE_PHP_VERSION);
     } elseif (version_compare($GLOBALS['wp_version'], RRZE_WP_VERSION, '<')) {
-        $error = sprintf(__('The server is running WordPress version %1$s. The Plugin requires at least WordPress version %2$s.', 'fau-fehlermeldungen'), $GLOBALS['wp_version'], RRZE_WP_VERSION);
+        $error = sprintf(__('The server is running WordPress version %1$s. The Plugin requires at least WordPress version %2$s.', 'rrze-vrevision'), $GLOBALS['wp_version'], RRZE_WP_VERSION);
     }
     return $error;
 }
